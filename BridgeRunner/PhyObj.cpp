@@ -29,7 +29,31 @@ PhyObj::PhyObj( const b2Vec2 &Pos, float Angle, bool Dynamic )
 
 PhyObj::~PhyObj()
 {
+    Owner->GetWorld()->DestroyBody( Body );
+    Body = NULL;
+}
 
+b2Vec2 PhyObj::GetPosition() const
+{
+    return Body->GetPosition();
+}
+
+float32 PhyObj::GetAngle() const
+{
+    return Body->GetAngle();
+}
+
+void PhyObj::AddChild( PhyObj *Obj )
+{
+    Obj->SetParent( this );
+    Children.push_back( Obj );
+
+    Owner->AddPhyObj( Obj );
+}
+
+void PhyObj::SetParent( PhyObj *Obj )
+{
+    Parent = Obj;
 }
 
 void PhyObj::Create()

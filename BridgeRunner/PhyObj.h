@@ -9,8 +9,12 @@
 #ifndef BuridgeES_PhyObj_h
 #define BuridgeES_PhyObj_h
 
-#include <Physics.h>
 #include <vector>
+
+#include "Physics.h"
+
+// Forward declarations
+class Physics;
 
 class PhyObj
 {
@@ -22,7 +26,7 @@ public:
     
     b2Body *GetBody() const;
     b2Vec2 GetPosition() const;
-    float GetAngle() const;
+    float32 GetAngle() const;
     
     void AddChild( PhyObj *Obj );
     void SetParent( PhyObj *Obj );
