@@ -15,6 +15,8 @@
 using namespace cocos2d;
 using namespace CocosDenshion;
 
+PhyObj *ActiveObject;
+
 TestScene::TestScene()
 {
     setIsTouchEnabled( true );
@@ -28,12 +30,14 @@ TestScene::TestScene()
     
     // Create ground
     PhyGround *Ground = new PhyGround();
+
     Ground->AddPoint( b2Vec2(0.0, 0.0) );
     Ground->AddPoint( b2Vec2( ScreenSize.width/32.0, 0 ) );
-    Ground->Create();
+    World->AddPhyObj( Ground );
     
-    VehicleObject *Falling = new VehicleObject( b2Vec2( 0.0, -20.0 ) );
-    Falling->Create();
+    VehicleObject *Falling = new VehicleObject( b2Vec2( 0.0, 5.0 ) );
+    World->AddPhyObj( Falling );
+    ActiveObject = Falling;
 }
 
 TestScene::~TestScene()
@@ -54,7 +58,7 @@ CCScene *TestScene::scene()
 
 void TestScene::draw()
 {
-    
+    std::cout << "Pos: " << ActiveObject->GetPosition().y << " Angle: " << ActiveObject->GetAngle() << std::endl;
 }
 
 void TestScene::tick( cocos2d::ccTime dt )

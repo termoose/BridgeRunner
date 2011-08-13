@@ -19,8 +19,3 @@ BridgeSegment::~BridgeSegment()
 {
     
 }
-
-void BridgeSegment::Create()
-{
-    Body->CreateFixture( &BodyFixture );
-}

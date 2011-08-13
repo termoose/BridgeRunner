@@ -22,7 +22,7 @@ public:
     PhyObj( const b2Vec2 &Pos, float Angle, bool Dynamic );
     ~PhyObj();
     
-    virtual void Create() = 0;
+    virtual void Create();
     
     b2Body *GetBody() const;
     b2Vec2 GetPosition() const;
@@ -42,8 +42,10 @@ protected:
     PhyObj *Parent;
     std::vector< PhyObj * > Children;
     
-private:
     Physics *Owner;
+    
+private:
+
 };
 
 

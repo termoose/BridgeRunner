@@ -17,9 +17,7 @@ class BridgeSegment : public PhyObj
 public:
     BridgeSegment( const b2Vec2 &Start, const b2Vec2 &Stop );
     ~BridgeSegment();
-    
-    void Create();
-    
+
 private:
     // ...
 };

@@ -17,8 +17,6 @@ class VehicleObject : public PhyObj
 public:
     VehicleObject( const b2Vec2 &Pos );
     ~VehicleObject();
-    
-    void Create();
 
 private:
     std::vector< b2Vec2 > Vertices;

@@ -26,6 +26,8 @@ void PhyGround::AddPoint( const b2Vec2 &Point )
 
 void PhyGround::Create()
 {
+    Body = Owner->GetWorld()->CreateBody( &BodyDef );
+
     for( std::vector< b2Vec2 >::iterator it = Vertices.begin() - 1;
         it != Vertices.end(); ++it )
     {

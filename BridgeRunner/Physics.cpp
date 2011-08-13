@@ -9,6 +9,12 @@
 #include <iostream>
 #include "Physics.h"
 
+// How to use this:
+// Create PhyObj objects and use AddPhyObj to add them the the physics,
+// then call Create() on the PhyObj's before using them.
+
+// Fixme: call Create() upon adding them to Physics class?
+
 Physics::Physics()
 {
     // Start counting the unique object Id at 0
@@ -42,6 +48,8 @@ Physics::~Physics()
 void Physics::AddPhyObj( PhyObj *Obj )
 {
     Objects[ ObjectIdx ] = Obj;
+    Obj->SetOwner( this );
+    Obj->Create();
 
     ObjectIdx++;
 }
