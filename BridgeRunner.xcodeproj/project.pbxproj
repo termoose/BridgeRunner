@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F54B7F213F5D73D009CE249 /* BridgeSegment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F54B7F113F5D73C009CE249 /* BridgeSegment.cpp */; };
+		5F54B7F613F5DBB5009CE249 /* VehicleObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F54B7F513F5DBB5009CE249 /* VehicleObject.cpp */; };
 		5FCDAB8813F1D2F3006C0725 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FCDAB8713F1D2F3006C0725 /* QuartzCore.framework */; };
 		5FCDAB8A13F1D2F3006C0725 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FCDAB8913F1D2F3006C0725 /* OpenGLES.framework */; };
 		5FCDAB8C13F1D2F3006C0725 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FCDAB8B13F1D2F3006C0725 /* OpenAL.framework */; };
@@ -178,6 +180,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5F54B7F113F5D73C009CE249 /* BridgeSegment.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BridgeSegment.cpp; sourceTree = "<group>"; };
+		5F54B7F413F5D75B009CE249 /* BridgeSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgeSegment.h; sourceTree = "<group>"; };
+		5F54B7F513F5DBB5009CE249 /* VehicleObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VehicleObject.cpp; sourceTree = "<group>"; };
+		5F54B7F713F5DBC7009CE249 /* VehicleObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VehicleObject.h; sourceTree = "<group>"; };
 		5FCDAB8313F1D2F3006C0725 /* BridgeRunner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BridgeRunner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FCDAB8713F1D2F3006C0725 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		5FCDAB8913F1D2F3006C0725 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -1243,6 +1249,10 @@
 				5FCDADB013F1D371006C0725 /* PhyObj.h */,
 				5FCDADB113F1D371006C0725 /* Physics.cpp */,
 				5FCDADB213F1D371006C0725 /* Physics.h */,
+				5F54B7F113F5D73C009CE249 /* BridgeSegment.cpp */,
+				5F54B7F413F5D75B009CE249 /* BridgeSegment.h */,
+				5F54B7F513F5DBB5009CE249 /* VehicleObject.cpp */,
+				5F54B7F713F5DBC7009CE249 /* VehicleObject.h */,
 			);
 			name = Physics;
 			sourceTree = "<group>";
@@ -1464,6 +1474,8 @@
 				5FCDADB413F1D371006C0725 /* PhyObj.cpp in Sources */,
 				5FCDADB513F1D371006C0725 /* Physics.cpp in Sources */,
 				5FCDADB813F1D387006C0725 /* TestScene.cpp in Sources */,
+				5F54B7F213F5D73D009CE249 /* BridgeSegment.cpp in Sources */,
+				5F54B7F613F5DBB5009CE249 /* VehicleObject.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1581,6 +1593,7 @@
 				5FCDADAB13F1D2F6006C0725 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

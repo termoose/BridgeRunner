@@ -10,6 +10,7 @@
 #define BuridgeES_TestScene_h
 
 #include "cocos2d.h"
+#include "Box2D.h"
 #include <Physics.h>
 
 class TestScene : public cocos2d::CCLayer
@@ -26,7 +27,7 @@ public:
     
 private:
     Physics *World;
-    
+
 };
 
 #endif

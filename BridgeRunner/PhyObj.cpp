@@ -3,7 +3,7 @@
 //  BuridgeES
 //
 //  Created by Ole Andre Birkedal on 8/7/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Extab. All rights reserved.
 //
 
 #include <iostream>
@@ -18,6 +18,9 @@ PhyObj::PhyObj( const b2Vec2 &Pos, float Angle, bool Dynamic )
     // CreateBody
     BodyFixture.density = 1.0;
     BodyFixture.friction = 0.1;
+
+    // Create the body
+    Body = Owner->GetWorld()->CreateBody( &BodyDef );
     
     // We define BodyShape in derived classes
     BodyFixture.shape = &BodyShape;
@@ -54,12 +57,6 @@ void PhyObj::AddChild( PhyObj *Obj )
 void PhyObj::SetParent( PhyObj *Obj )
 {
     Parent = Obj;
-}
-
-void PhyObj::Create()
-{
-    Body = Owner->GetWorld()->CreateBody( &BodyDef );
-    Body->CreateFixture( &BodyFixture );
 }
 
 void PhyObj::SetOwner( Physics *PhysicsPtr )

@@ -27,6 +27,15 @@ Physics::Physics()
 
 Physics::~Physics()
 {
+    // Delete all objects in scene
+    for( std::map< int32, PhyObj * >::iterator it = Objects.begin();
+        it != Objects.end(); ++it )
+    {
+        delete it->second;
+    }
+    
+    Objects.clear();
+
     delete World;
 }
 

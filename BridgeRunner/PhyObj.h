@@ -3,7 +3,7 @@
 //  BuridgeES
 //
 //  Created by Ole Andre Birkedal on 8/7/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Extab. All rights reserved.
 //
 
 #ifndef BuridgeES_PhyObj_h
@@ -11,7 +11,7 @@
 
 #include <vector>
 
-#include "Physics.h"
+#include <Physics.h>
 
 // Forward declarations
 class Physics;
@@ -22,7 +22,7 @@ public:
     PhyObj( const b2Vec2 &Pos, float Angle, bool Dynamic );
     ~PhyObj();
     
-    void Create();
+    virtual void Create() = 0;
     
     b2Body *GetBody() const;
     b2Vec2 GetPosition() const;

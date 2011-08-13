@@ -10,6 +10,7 @@
 
 #include "cocos2d.h"
 #include "HelloWorldScene.h"
+#include "TestScene.h"
 
 USING_NS_CC;
 
@@ -33,7 +34,7 @@ bool AppDelegate::initInstance()
         // The HelloWorld is designed as HVGA.
         CCEGLView * pMainWnd = new CCEGLView();
         CC_BREAK_IF(! pMainWnd
-            || ! pMainWnd->Create(TEXT("cocos2d: Hello World"), 480, 320));
+            || ! pMainWnd->Create(TEXT("Bridge Runner"), 480, 320));
 
 #endif  // CC_PLATFORM_WIN32
         
@@ -78,7 +79,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     pDirector->setOpenGLView(&CCEGLView::sharedOpenGLView());
 
     // enable High Resource Mode(2x, such as iphone4) and maintains low resource on other devices.
-    // pDirector->enableRetinaDisplay(true);
+    //pDirector->enableRetinaDisplay(true);
 
 	// sets landscape mode
 	// pDirector->setDeviceOrientation(kCCDeviceOrientationLandscapeLeft);
@@ -91,9 +92,12 @@ bool AppDelegate::applicationDidFinishLaunching()
 
 	// create a scene. it's an autorelease object
 	CCScene *pScene = HelloWorld::scene();
+    
+    CCScene *Test = TestScene::scene();
+    pDirector->runWithScene( Test );
 
 	// run
-	pDirector->runWithScene(pScene);
+	//pDirector->runWithScene(pScene);
 
 	return true;
 }
