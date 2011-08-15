@@ -11,11 +11,10 @@
 #include "TestScene.h"
 #include "PhyGround.h"
 #include "VehicleObject.h"
+#include "BridgeSegment.h"
 
 using namespace cocos2d;
 using namespace CocosDenshion;
-
-PhyObj *ActiveObject;
 
 TestScene::TestScene()
 {
@@ -30,14 +29,20 @@ TestScene::TestScene()
     
     // Create ground
     PhyGround *Ground = new PhyGround();
-
-    Ground->AddPoint( b2Vec2(0.0, 0.0) );
-    Ground->AddPoint( b2Vec2( ScreenSize.width/32.0, 0 ) );
+    Ground->AddPoint( b2Vec2(0.0, 20.0 / 32.0) );
+    Ground->AddPoint( b2Vec2(ScreenSize.width / 32.0, 20.0 / 32.0) );
     World->AddPhyObj( Ground );
     
-    VehicleObject *Falling = new VehicleObject( b2Vec2( 0.0, 5.0 ) );
+    // Falling vehicle
+    VehicleObject *Falling = new VehicleObject( b2Vec2( ScreenSize.width / 64.0, ScreenSize.height / 32.0 ) );
     World->AddPhyObj( Falling );
-    ActiveObject = Falling;
+    
+    // Bridge segment example
+    b2Vec2 StartPos = b2Vec2( 120 / 32.0, 40 / 32.0 );
+    b2Vec2 StopPos  = b2Vec2( 320 / 32.0, 190 / 32.0 );
+    BridgeSegment *Segment = new BridgeSegment( StartPos, StopPos );
+    World->AddPhyObj( Segment );
+    
 }
 
 TestScene::~TestScene()
@@ -58,7 +63,16 @@ CCScene *TestScene::scene()
 
 void TestScene::draw()
 {
-    std::cout << "Pos: " << ActiveObject->GetPosition().y << " Angle: " << ActiveObject->GetAngle() << std::endl;
+	glDisable(GL_TEXTURE_2D);
+	glDisableClientState(GL_COLOR_ARRAY);
+	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+
+    glLineWidth( 2.0 );
+    World->RenderAll();
+    
+	glEnable(GL_TEXTURE_2D);
+	glEnableClientState(GL_COLOR_ARRAY);
+	glEnableClientState(GL_TEXTURE_COORD_ARRAY);	
 }
 
 void TestScene::tick( cocos2d::ccTime dt )

@@ -25,8 +25,8 @@ Physics::Physics()
     
     // Default values for accuracy in simulation
     TimeStep = 1.0 / 60.0;
-    VelIters = 10;
-    PosIters = 10;
+    VelIters = 8;
+    PosIters = 2;
     
     World = new b2World( Gravity, DoSleep );
 }
@@ -95,6 +95,13 @@ b2World *Physics::GetWorld() const
 
 void Physics::RenderAll()
 {
-
+    for( std::map< int32, PhyObj * >::iterator it = Objects.begin();
+        it != Objects.end(); ++it )
+    {
+        it->second->Render();
+    }
+        
+        
 }
+
 

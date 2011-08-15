@@ -11,8 +11,13 @@
 
 #include <map>
 
+#include "cocos2d.h" // For drawing
+
 #include "Box2D.h"
 #include "PhyObj.h"
+
+// Ratio between Box2D coordinates and screen coordinates
+#define PTM_RATIO 32
 
 // Forward declarations
 class PhyObj;

@@ -17,7 +17,7 @@ PhyObj::PhyObj( const b2Vec2 &Pos, float Angle, bool Dynamic )
     
     // CreateBody
     BodyFixture.density = 1.0;
-    BodyFixture.friction = 0.1;
+    BodyFixture.friction = 0.2;
     
     // We define BodyShape in derived classes
     BodyFixture.shape = &BodyShape;
@@ -31,14 +31,6 @@ PhyObj::~PhyObj()
 {
     Owner->GetWorld()->DestroyBody( Body );
     Body = NULL;
-}
-
-// Create function is the same for almost all classes
-void PhyObj::Create()
-{
-    Body = Owner->GetWorld()->CreateBody( &BodyDef );
-    
-    Body->CreateFixture( &BodyFixture );
 }
 
 b2Vec2 PhyObj::GetPosition() const

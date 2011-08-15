@@ -22,7 +22,8 @@ public:
     PhyObj( const b2Vec2 &Pos, float Angle, bool Dynamic );
     ~PhyObj();
     
-    virtual void Create();
+    virtual void Create() = 0;
+    virtual void Render() = 0;
     
     b2Body *GetBody() const;
     b2Vec2 GetPosition() const;
