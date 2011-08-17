@@ -21,8 +21,9 @@ PhyGround::~PhyGround()
     Vertices.clear();
 }
 
-void PhyGround::AddPoint( const b2Vec2 &Point )
+void PhyGround::AddPoint( b2Vec2 Point )
 {
+    Point *= 1 / PTM_RATIO;
     Vertices.push_back( Point );
 }
 

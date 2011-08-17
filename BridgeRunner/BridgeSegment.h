@@ -18,7 +18,6 @@ public:
     BridgeSegment( const b2Vec2 &Start, const b2Vec2 &Stop );
     ~BridgeSegment();
     
-    virtual void Create();
     virtual void Render();
 
 private:

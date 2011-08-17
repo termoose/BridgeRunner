@@ -17,7 +17,7 @@
 #include "PhyObj.h"
 
 // Ratio between Box2D coordinates and screen coordinates
-#define PTM_RATIO 32
+#define PTM_RATIO (float32)(32.0)
 
 // Forward declarations
 class PhyObj;

@@ -20,7 +20,7 @@ public:
     PhyGround();
     ~PhyGround();
     
-    void AddPoint( const b2Vec2 &Point );
+    void AddPoint( b2Vec2 Point );
 
     virtual void Create();
     virtual void Render();

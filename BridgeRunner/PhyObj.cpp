@@ -13,6 +13,7 @@ PhyObj::PhyObj( const b2Vec2 &Pos, float Angle, bool Dynamic )
 {
     BodyDef.type = Dynamic ? b2_dynamicBody : b2_staticBody;
     BodyDef.position = Pos;
+    BodyDef.position *= 1 / PTM_RATIO;
     BodyDef.angle = Angle;
     
     // CreateBody
@@ -38,9 +39,27 @@ b2Vec2 PhyObj::GetPosition() const
     return Body->GetPosition();
 }
 
+void PhyObj::Create()
+{
+    // If it has a parent, transform it into local space for that object
+    if( Parent )
+    {
+        BodyDef.position = Parent->GetBody()->GetWorldPoint( BodyDef.position );
+    }
+
+    Body = Owner->GetWorld()->CreateBody( &BodyDef );
+    
+    Body->CreateFixture( &BodyFixture );
+}
+
 float32 PhyObj::GetAngle() const
 {
     return Body->GetAngle();
+}
+
+b2Body *PhyObj::GetBody() const
+{
+    return Body;
 }
 
 void PhyObj::AddChild( PhyObj *Obj )

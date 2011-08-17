@@ -16,15 +16,11 @@ BridgeSegment::BridgeSegment( const b2Vec2 &Start, const b2Vec2 &Stop ) : PhyObj
     StartPosition = Start;
     StopPosition = Stop;
 
-    BodyShape.SetAsEdge( Start, Stop );
-    BodyShape.m_radius = 0.1;
-}
-
-void BridgeSegment::Create()
-{    
-    Body = Owner->GetWorld()->CreateBody( &BodyDef );
+    StartPosition *= 1 / PTM_RATIO;
+    StopPosition *= 1 / PTM_RATIO;
     
-    Body->CreateFixture( &BodyFixture );
+    BodyShape.SetAsEdge( StartPosition, StopPosition );
+    BodyShape.m_radius = 0.1;
 }
 
 void BridgeSegment::Render()

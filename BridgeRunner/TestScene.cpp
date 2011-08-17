@@ -12,6 +12,8 @@
 #include "PhyGround.h"
 #include "VehicleObject.h"
 #include "BridgeSegment.h"
+#include "PhyWheel.h"
+#include "PhyJoint.h"
 
 using namespace cocos2d;
 using namespace CocosDenshion;
@@ -29,19 +31,28 @@ TestScene::TestScene()
     
     // Create ground
     PhyGround *Ground = new PhyGround();
-    Ground->AddPoint( b2Vec2(0.0, 20.0 / 32.0) );
-    Ground->AddPoint( b2Vec2(ScreenSize.width / 32.0, 20.0 / 32.0) );
+    Ground->AddPoint( b2Vec2(0.0, 20.0) );
+    Ground->AddPoint( b2Vec2(ScreenSize.width, 20.0) );
     World->AddPhyObj( Ground );
     
     // Falling vehicle
-    VehicleObject *Falling = new VehicleObject( b2Vec2( ScreenSize.width / 64.0, ScreenSize.height / 32.0 ) );
+    VehicleObject *Falling = new VehicleObject( b2Vec2( ScreenSize.width / 2.1, ScreenSize.height / 1.0 ) );
     World->AddPhyObj( Falling );
     
+    //PhyWheel *CircleTest = new PhyWheel( b2Vec2( ScreenSize.width / 2.0, ScreenSize.height / 2.0 ) );
+    PhyWheel *CircleTest = new PhyWheel( b2Vec2( 0.0, -40.0 ) );
+    Falling->AddChild( CircleTest );
+    //World->AddPhyObj( CircleTest );
+    
+    PhyJoint *TestJoint = new PhyJoint( Falling, CircleTest, b2Vec2(0.0, 20.0), b2Vec2(0.0, 20.0) );
+    
     // Bridge segment example
-    b2Vec2 StartPos = b2Vec2( 120 / 32.0, 40 / 32.0 );
-    b2Vec2 StopPos  = b2Vec2( 320 / 32.0, 190 / 32.0 );
+    /*
+    b2Vec2 StartPos = b2Vec2( 120, 40 );
+    b2Vec2 StopPos  = b2Vec2( 320, 190 );
     BridgeSegment *Segment = new BridgeSegment( StartPos, StopPos );
     World->AddPhyObj( Segment );
+     */
     
 }
 

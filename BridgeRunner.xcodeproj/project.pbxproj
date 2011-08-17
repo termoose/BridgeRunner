@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		5F54B7F213F5D73D009CE249 /* BridgeSegment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F54B7F113F5D73C009CE249 /* BridgeSegment.cpp */; };
 		5F54B7F613F5DBB5009CE249 /* VehicleObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F54B7F513F5DBB5009CE249 /* VehicleObject.cpp */; };
+		5F5F368D13FC351700FA5575 /* PhyJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F5F368C13FC351700FA5575 /* PhyJoint.cpp */; };
+		5F8BD40113FAF5030052463F /* PhyWheel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F8BD40013FAF5030052463F /* PhyWheel.cpp */; };
 		5FCDAB8813F1D2F3006C0725 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FCDAB8713F1D2F3006C0725 /* QuartzCore.framework */; };
 		5FCDAB8A13F1D2F3006C0725 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FCDAB8913F1D2F3006C0725 /* OpenGLES.framework */; };
 		5FCDAB8C13F1D2F3006C0725 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FCDAB8B13F1D2F3006C0725 /* OpenAL.framework */; };
@@ -184,6 +186,10 @@
 		5F54B7F413F5D75B009CE249 /* BridgeSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgeSegment.h; sourceTree = "<group>"; };
 		5F54B7F513F5DBB5009CE249 /* VehicleObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VehicleObject.cpp; sourceTree = "<group>"; };
 		5F54B7F713F5DBC7009CE249 /* VehicleObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VehicleObject.h; sourceTree = "<group>"; };
+		5F5F368A13FC2FF200FA5575 /* PhyJoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhyJoint.h; sourceTree = "<group>"; };
+		5F5F368C13FC351700FA5575 /* PhyJoint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhyJoint.cpp; sourceTree = "<group>"; };
+		5F8BD40013FAF5030052463F /* PhyWheel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhyWheel.cpp; sourceTree = "<group>"; };
+		5F8BD40313FAF50E0052463F /* PhyWheel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhyWheel.h; sourceTree = "<group>"; };
 		5FCDAB8313F1D2F3006C0725 /* BridgeRunner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BridgeRunner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FCDAB8713F1D2F3006C0725 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		5FCDAB8913F1D2F3006C0725 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -1253,6 +1259,10 @@
 				5F54B7F413F5D75B009CE249 /* BridgeSegment.h */,
 				5F54B7F513F5DBB5009CE249 /* VehicleObject.cpp */,
 				5F54B7F713F5DBC7009CE249 /* VehicleObject.h */,
+				5F8BD40013FAF5030052463F /* PhyWheel.cpp */,
+				5F8BD40313FAF50E0052463F /* PhyWheel.h */,
+				5F5F368A13FC2FF200FA5575 /* PhyJoint.h */,
+				5F5F368C13FC351700FA5575 /* PhyJoint.cpp */,
 			);
 			name = Physics;
 			sourceTree = "<group>";
@@ -1476,6 +1486,8 @@
 				5FCDADB813F1D387006C0725 /* TestScene.cpp in Sources */,
 				5F54B7F213F5D73D009CE249 /* BridgeSegment.cpp in Sources */,
 				5F54B7F613F5DBB5009CE249 /* VehicleObject.cpp in Sources */,
+				5F8BD40113FAF5030052463F /* PhyWheel.cpp in Sources */,
+				5F5F368D13FC351700FA5575 /* PhyJoint.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
