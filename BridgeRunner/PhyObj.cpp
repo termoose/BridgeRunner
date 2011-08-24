@@ -18,7 +18,7 @@ PhyObj::PhyObj( const b2Vec2 &Pos, float Angle, bool Dynamic )
     
     // CreateBody
     BodyFixture.density = 1.0;
-    BodyFixture.friction = 0.2;
+    BodyFixture.friction = 0.8;
     
     // We define BodyShape in derived classes
     BodyFixture.shape = &BodyShape;
@@ -37,6 +37,11 @@ PhyObj::~PhyObj()
 b2Vec2 PhyObj::GetPosition() const
 {
     return Body->GetPosition();
+}
+
+void PhyObj::AddTorque( float32 Torque )
+{
+    Body->ApplyTorque( Torque );
 }
 
 void PhyObj::Create()
@@ -73,6 +78,11 @@ void PhyObj::AddChild( PhyObj *Obj )
 void PhyObj::SetParent( PhyObj *Obj )
 {
     Parent = Obj;
+}
+
+Physics *PhyObj::GetOwner()
+{
+    return Owner;
 }
 
 void PhyObj::SetOwner( Physics *PhysicsPtr )

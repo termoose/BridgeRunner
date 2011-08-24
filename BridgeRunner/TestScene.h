@@ -23,6 +23,7 @@ public:
     
     virtual void draw();
     virtual void ccTouchesEnded( cocos2d::CCSet *touches, cocos2d::CCEvent* event );
+    virtual void ccTouchesBegin( cocos2d::CCSet *touches, cocos2d::CCEvent* event );
     void tick( cocos2d::ccTime dt );
     
 private:

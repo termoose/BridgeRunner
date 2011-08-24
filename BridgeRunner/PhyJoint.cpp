@@ -16,12 +16,15 @@ PhyJoint::PhyJoint( PhyObj *Obj1, PhyObj *Obj2, const b2Vec2 &Anchor1, const b2V
     
     JointDef.collideConnected = false;
     
-    JointDef.lowerTranslation = -5.0f;
-    JointDef.upperTranslation = 2.5f;
-    JointDef.enableLimit = true;
+    JointDef.lowerTranslation = -1.0f;
+    JointDef.upperTranslation = 0.5f;
+    JointDef.enableLimit = false;
     JointDef.maxMotorForce = 1.0f;
-    JointDef.motorSpeed = 0.0f;
+    JointDef.motorSpeed = 1.0f;
     JointDef.enableMotor = true;
+    
+    // Set the owner of the joint to the owner of the first object
+    Owner = Obj1->GetOwner();
 }
 
 PhyJoint::~PhyJoint()
@@ -31,7 +34,7 @@ PhyJoint::~PhyJoint()
 
 void PhyJoint::Create()
 {
-    
+    Joint = Owner->GetWorld()->CreateJoint( &JointDef );
 }
 
 void PhyJoint::Render()

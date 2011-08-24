@@ -29,10 +29,13 @@ public:
     b2Vec2 GetPosition() const;
     float32 GetAngle() const;
     
+    void AddTorque( float32 Torque );
+    
     void AddChild( PhyObj *Obj );
     void SetParent( PhyObj *Obj );
     
     void SetOwner( Physics *PhysicsPtr );
+    Physics *GetOwner();
 
 protected:
     b2Body *Body;

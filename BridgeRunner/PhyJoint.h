@@ -24,6 +24,8 @@ public:
 private:
     b2Joint *Joint;
     b2PrismaticJointDef JointDef;
+    
+    Physics *Owner;
 };
 
 #endif
