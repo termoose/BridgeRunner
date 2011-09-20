@@ -10,24 +10,21 @@
 #include "Physics.h"
 
 // How to use this:
-// Create PhyObj objects and use AddPhyObj to add them the the physics,
-// then call Create() on the PhyObj's before using them.
-
-// Fixme: call Create() upon adding them to Physics class?
-
-Physics::Physics()
-{
+// Create PhyObj objects and use AddPhyObj to add them the the physics
+// using AddPhyObj
+Physics::Physics() : 
     // Start counting the unique object Id at 0
-    ObjectIdx = 0;
+    ObjectIdx( 0 ),
+    Gravity( 0.0, -10.0 ),
 
-    DoSleep = true;
-    Gravity = b2Vec2( 0.0, -10.0 );
-    
+    // Put inactive objects to sleep by default
+    DoSleep( true ),
+
     // Default values for accuracy in simulation
-    TimeStep = 1.0 / 60.0;
-    VelIters = 8;
-    PosIters = 2;
-    
+    TimeStep( 1.0 / 60.0 ),
+    VelIters( 8 ),
+    PosIters( 2 )
+{  
     World = new b2World( Gravity, DoSleep );
 }
 

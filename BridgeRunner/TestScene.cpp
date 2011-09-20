@@ -15,7 +15,6 @@
 #include "PhyWheel.h"
 #include "PhyJoint.h"
 
-using namespace cocos2d;
 using namespace CocosDenshion;
 
 PhyWheel *CircleTest;
@@ -89,30 +88,55 @@ void TestScene::tick( cocos2d::ccTime dt )
 {
     World->DoStep();
 
+    // FIXME: Change force on Circle with respect to slope of current
+    // bridge segment and weight of Circle (assuming g = 10 m/s^2).
     CircleTest->AddTorque( -1.4 );
 }
 
-// Put these two touch functions into a higher class, then overwrite them as needed
+std::pair< CCPoint, CCPoint > TestScene::GetCurrentTouch( int32 FirstIndex, int32 SecondIndex )
+{
+    std::vector< CCTouch * > FirstTouches = LastTouches.first;
+    std::vector< CCTouch * > SecondTouches = LastTouches.second;
+
+
+}
+
+void TestScene::ClearCurrentTouch()
+{
+
+}
+
 void TestScene::ccTouchesBegin( cocos2d::CCSet *touches, cocos2d::CCEvent *event )
 {
+    CCSetIterator it;
+    CCTouch *touch;
     
+    for( it = touches->begin(); it != touches->end(); ++it )
+    {
+        touch = (CCTouch *)( *it );
+        
+        if( !touch )
+            break;
+
+        CCPoint location = touch->locationInView( touch->view() );
+    }
 }
 
 void TestScene::ccTouchesEnded( cocos2d::CCSet *touches, cocos2d::CCEvent* event )
 {
 	CCSetIterator it;
-	CCTouch* touch;
+	CCTouch *touch;
     
 	for( it = touches->begin(); it != touches->end(); ++it)
 	{
-		touch = (CCTouch*)(*it);
+		touch = (CCTouch *)( *it );
         
-		if(!touch)
+		if( !touch )
 			break;
         
-        CCPoint location = touch->locationInView(touch->view());
+        CCPoint location = touch->locationInView( touch->view() );
 		
-		location = CCDirector::sharedDirector()->convertToGL(location);
+		location = CCDirector::sharedDirector()->convertToGL( location );
         
         if( location.x >= CircleTest->GetPosition().x * PTM_RATIO )
             CircleTest->AddTorque( -50.0 );

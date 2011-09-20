@@ -11,11 +11,10 @@
 
 using namespace cocos2d;
 
-BridgeSegment::BridgeSegment( const b2Vec2 &Start, const b2Vec2 &Stop ) : PhyObj( b2Vec2(0.0, 0.0), 0.0, false )
+BridgeSegment::BridgeSegment( const b2Vec2 &Start, const b2Vec2 &Stop ) : PhyObj( b2Vec2(0.0, 0.0), 0.0, false ),
+    StartPosition( Start ),
+    StopPosition( Stop )
 {
-    StartPosition = Start;
-    StopPosition = Stop;
-
     StartPosition *= 1 / PTM_RATIO;
     StopPosition *= 1 / PTM_RATIO;
     

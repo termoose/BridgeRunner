@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F13B15F1416A60E009B3D8B /* Scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F13B15E1416A60E009B3D8B /* Scene.cpp */; };
 		5F54B7F213F5D73D009CE249 /* BridgeSegment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F54B7F113F5D73C009CE249 /* BridgeSegment.cpp */; };
 		5F54B7F613F5DBB5009CE249 /* VehicleObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F54B7F513F5DBB5009CE249 /* VehicleObject.cpp */; };
 		5F5F368D13FC351700FA5575 /* PhyJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F5F368C13FC351700FA5575 /* PhyJoint.cpp */; };
@@ -21,7 +22,6 @@
 		5FCDAB9613F1D2F3006C0725 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FCDAB9513F1D2F3006C0725 /* CoreGraphics.framework */; };
 		5FCDAB9A13F1D2F3006C0725 /* CloseNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FCDAB9913F1D2F3006C0725 /* CloseNormal.png */; };
 		5FCDAB9C13F1D2F3006C0725 /* CloseSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FCDAB9B13F1D2F3006C0725 /* CloseSelected.png */; };
-		5FCDAB9E13F1D2F3006C0725 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FCDAB9D13F1D2F3006C0725 /* Default.png */; };
 		5FCDABA013F1D2F3006C0725 /* HelloWorld.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FCDAB9F13F1D2F3006C0725 /* HelloWorld.png */; };
 		5FCDABA213F1D2F3006C0725 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FCDABA113F1D2F3006C0725 /* Icon-72.png */; };
 		5FCDABA413F1D2F3006C0725 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FCDABA313F1D2F3006C0725 /* Icon-Small-50.png */; };
@@ -182,6 +182,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5F13B15E1416A60E009B3D8B /* Scene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Scene.cpp; sourceTree = "<group>"; };
+		5F13B1611416A616009B3D8B /* Scene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scene.h; sourceTree = "<group>"; };
 		5F54B7F113F5D73C009CE249 /* BridgeSegment.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BridgeSegment.cpp; sourceTree = "<group>"; };
 		5F54B7F413F5D75B009CE249 /* BridgeSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgeSegment.h; sourceTree = "<group>"; };
 		5F54B7F513F5DBB5009CE249 /* VehicleObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VehicleObject.cpp; sourceTree = "<group>"; };
@@ -1242,6 +1244,8 @@
 				5FCDADA013F1D2F6006C0725 /* AppDelegate.cpp */,
 				5FCDADA213F1D2F6006C0725 /* HelloWorldScene.h */,
 				5FCDADA313F1D2F6006C0725 /* HelloWorldScene.cpp */,
+				5F13B15E1416A60E009B3D8B /* Scene.cpp */,
+				5F13B1611416A616009B3D8B /* Scene.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1316,7 +1320,6 @@
 			files = (
 				5FCDAB9A13F1D2F3006C0725 /* CloseNormal.png in Resources */,
 				5FCDAB9C13F1D2F3006C0725 /* CloseSelected.png in Resources */,
-				5FCDAB9E13F1D2F3006C0725 /* Default.png in Resources */,
 				5FCDABA013F1D2F3006C0725 /* HelloWorld.png in Resources */,
 				5FCDABA213F1D2F3006C0725 /* Icon-72.png in Resources */,
 				5FCDABA413F1D2F3006C0725 /* Icon-Small-50.png in Resources */,
@@ -1488,6 +1491,7 @@
 				5F54B7F613F5DBB5009CE249 /* VehicleObject.cpp in Sources */,
 				5F8BD40113FAF5030052463F /* PhyWheel.cpp in Sources */,
 				5F5F368D13FC351700FA5575 /* PhyJoint.cpp in Sources */,
+				5F13B15F1416A60E009B3D8B /* Scene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
