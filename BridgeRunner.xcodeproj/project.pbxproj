@@ -179,6 +179,7 @@
 		5FCDADB413F1D371006C0725 /* PhyObj.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FCDADAF13F1D371006C0725 /* PhyObj.cpp */; };
 		5FCDADB513F1D371006C0725 /* Physics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FCDADB113F1D371006C0725 /* Physics.cpp */; };
 		5FCDADB813F1D387006C0725 /* TestScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FCDADB613F1D387006C0725 /* TestScene.cpp */; };
+		5FE0D6B614323CDD0006079A /* InfiniteScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FE0D6B514323CDD0006079A /* InfiniteScene.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -541,6 +542,8 @@
 		5FCDADB213F1D371006C0725 /* Physics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Physics.h; sourceTree = "<group>"; };
 		5FCDADB613F1D387006C0725 /* TestScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestScene.cpp; sourceTree = "<group>"; };
 		5FCDADB713F1D387006C0725 /* TestScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestScene.h; sourceTree = "<group>"; };
+		5FE0D6B314323C290006079A /* InfiniteScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfiniteScene.h; sourceTree = "<group>"; };
+		5FE0D6B514323CDD0006079A /* InfiniteScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InfiniteScene.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1246,6 +1249,8 @@
 				5FCDADA313F1D2F6006C0725 /* HelloWorldScene.cpp */,
 				5F13B15E1416A60E009B3D8B /* Scene.cpp */,
 				5F13B1611416A616009B3D8B /* Scene.h */,
+				5FE0D6B314323C290006079A /* InfiniteScene.h */,
+				5FE0D6B514323CDD0006079A /* InfiniteScene.cpp */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1492,6 +1497,7 @@
 				5F8BD40113FAF5030052463F /* PhyWheel.cpp in Sources */,
 				5F5F368D13FC351700FA5575 /* PhyJoint.cpp in Sources */,
 				5F13B15F1416A60E009B3D8B /* Scene.cpp in Sources */,
+				5FE0D6B614323CDD0006079A /* InfiniteScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1560,11 +1566,13 @@
 				GCC_PREFIX_HEADER = BridgeRunner/Prefix.pch;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				INFOPLIST_FILE = BridgeRunner/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_LDFLAGS = (
 					"-lxml2",
 					"-lz",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "\"BridgeRunner/libs\"";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1579,11 +1587,13 @@
 				GCC_PREFIX_HEADER = BridgeRunner/Prefix.pch;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				INFOPLIST_FILE = BridgeRunner/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_LDFLAGS = (
 					"-lxml2",
 					"-lz",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "\"BridgeRunner/libs\"";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;

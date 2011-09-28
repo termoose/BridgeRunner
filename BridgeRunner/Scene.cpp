@@ -7,18 +7,17 @@
 //
 
 #include <iostream>
+#include "BridgeSegment.h"
 #include "Scene.h"
 
 Scene::Scene()
 {
     setIsTouchEnabled( true );
     setIsAccelerometerEnabled( false );
-
-    schedule( schedule_selector( Scene::tick ) );
-
-    CCSize ScreenSize = CCDirector::sharedDirector()->getWinSize();
     
-    ClearTouches();
+    ScreenSize = CCDirector::sharedDirector()->getWinSize();
+    
+    schedule( schedule_selector( Scene::tick ) );
     
     // Create the physics object
     World = new Physics();
@@ -38,29 +37,57 @@ void Scene::draw()
     
     glLineWidth( 2.0 );
     World->RenderAll();
+
+    glColor4f( 1.0, 0.0, 0.0, 1.0 );
+    ccDrawLine( BoxToCCVec( SegmentStart ), BoxToCCVec( SegmentStop ) );
     
 	glEnable(GL_TEXTURE_2D);
 	glEnableClientState(GL_COLOR_ARRAY);
-	glEnableClientState(GL_TEXTURE_COORD_ARRAY);	
+	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+}
+
+b2Vec2 Scene::CCToBoxVec( cocos2d::CCPoint Point )
+{
+    return b2Vec2( Point.x, Point.y );
+}
+
+CCPoint Scene::BoxToCCVec( b2Vec2 Point )
+{
+    return CCPoint( Point.x, Point.y );
 }
 
 void Scene::tick( cocos2d::ccTime dt )
 {
     World->DoStep();
-    
-    // FIXME: Change force on Circle with respect to slope of current
-    // bridge segment and weight of Circle (assuming g = 10 m/s^2).
-    //CircleTest->AddTorque( -1.4 );
 }
 
-void Scene::ccTouchesBegin( cocos2d::CCSet *touches, cocos2d::CCEvent *event )
+void Scene::ccTouchesMoved( CCSet *touches, CCEvent *event )
 {
     CCSetIterator it;
     CCTouch *touch;
     
+    // FIXME: use anyObject() or begin()?
+    touch = static_cast< CCTouch * >( touches->anyObject() );
+    
+    if( !touch )
+        return;
+    
+    CCPoint location = touch->locationInView( touch->view() );
+    location = CCDirector::sharedDirector()->convertToGL( location );
+
+    SegmentStart = StartTouch;
+    SegmentStop  = CCToBoxVec( location );
+}
+
+void Scene::ccTouchesBegan( cocos2d::CCSet *touches, cocos2d::CCEvent *event )
+{
+    CCSetIterator it;
+    CCTouch *touch;
+
+    // FIXME: for_each and lambda with C++11
     for( it = touches->begin(); it != touches->end(); ++it )
     {
-        touch = (CCTouch *)( *it );
+        touch = static_cast< CCTouch * >( *it );
         
         if( !touch )
             break;
@@ -68,7 +95,7 @@ void Scene::ccTouchesBegin( cocos2d::CCSet *touches, cocos2d::CCEvent *event )
         CCPoint location = touch->locationInView( touch->view() );
         location = CCDirector::sharedDirector()->convertToGL( location );
         
-        Touches.first.push_back( b2Vec2( location.x, location.y ) );        
+        StartTouch = CCToBoxVec( location );
     }
 }
 
@@ -76,26 +103,24 @@ void Scene::ccTouchesEnded( cocos2d::CCSet *touches, cocos2d::CCEvent* event )
 {
 	CCSetIterator it;
 	CCTouch *touch;
-    
-	for( it = touches->begin(); it != touches->end(); ++it)
+
+    // FIXME: for_each and lambda with C++11
+	for( it = touches->begin(); it != touches->end(); ++it )
 	{
-		touch = (CCTouch *)( *it );
+        touch = static_cast< CCTouch * >( *it );
         
 		if( !touch )
 			break;
         
         CCPoint location = touch->locationInView( touch->view() );
-
 		location = CCDirector::sharedDirector()->convertToGL( location );
         
-        Touches.second.push_back( b2Vec2( location.x, location.y ) );
+        if( b2Dot( SegmentStart - SegmentStop, SegmentStart - SegmentStop ) > 5.0 )
+        {
+            World->AddPhyObj( new BridgeSegment( SegmentStart, SegmentStop ) );
+        }
+        
 	}
-}
-
-void Scene::ClearTouches()
-{
-    Touches.first.clear();
-    Touches.second.clear();
 }
 
 CCScene *Scene::scene()

@@ -27,7 +27,8 @@ void BridgeSegment::Render()
     b2Vec2 WorldStart = Body->GetWorldPoint( StartPosition );
     b2Vec2 WorldStop = Body->GetWorldPoint( StopPosition );
 
-    ccDrawLine( CCPoint(WorldStart.x * 32, WorldStart.y * 32), CCPoint(WorldStop.x * 32, WorldStop.y * 32) );
+    ccDrawLine( CCPoint(WorldStart.x * PTM_RATIO, WorldStart.y * PTM_RATIO),
+                CCPoint(WorldStop.x * PTM_RATIO, WorldStop.y * PTM_RATIO) );
 }
 
 BridgeSegment::~BridgeSegment()

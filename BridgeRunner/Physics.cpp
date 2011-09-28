@@ -90,8 +90,10 @@ b2World *Physics::GetWorld() const
     return World;
 }
 
+// Debug render function
 void Physics::RenderAll()
 {
+    glColor4f( 1.0, 1.0, 1.0, 1.0 );
     for( std::map< int32, PhyObj * >::iterator it = Objects.begin();
         it != Objects.end(); ++it )
     {

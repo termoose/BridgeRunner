@@ -36,7 +36,6 @@ TestScene::TestScene()
     Ground->AddPoint( b2Vec2(ScreenSize.width, 20.0) );
     World->AddPhyObj( Ground );
 
-    //PhyWheel *CircleTest = new PhyWheel( b2Vec2( ScreenSize.width / 2.0, ScreenSize.height / 2.0 ) );
     CircleTest = new PhyWheel( b2Vec2( ScreenSize.width / 1.3, 320.0 ) );
     World->AddPhyObj( CircleTest );
 
@@ -93,20 +92,7 @@ void TestScene::tick( cocos2d::ccTime dt )
     CircleTest->AddTorque( -1.4 );
 }
 
-std::pair< CCPoint, CCPoint > TestScene::GetCurrentTouch( int32 FirstIndex, int32 SecondIndex )
-{
-    std::vector< CCTouch * > FirstTouches = LastTouches.first;
-    std::vector< CCTouch * > SecondTouches = LastTouches.second;
-
-
-}
-
-void TestScene::ClearCurrentTouch()
-{
-
-}
-
-void TestScene::ccTouchesBegin( cocos2d::CCSet *touches, cocos2d::CCEvent *event )
+void TestScene::ccTouchesBegan( cocos2d::CCSet *touches, cocos2d::CCEvent *event )
 {
     CCSetIterator it;
     CCTouch *touch;

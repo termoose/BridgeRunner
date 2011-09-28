@@ -36,7 +36,7 @@ void PhyGround::Render()
         it != Vertices.end(); ++it )
     {
         b2Vec2 Current = Body->GetWorldVector( *it );
-        DrawPoints[ it - Vertices.begin() ] = CCPoint( Current.x * 32, Current.y * 32 );
+        DrawPoints[ it - Vertices.begin() ] = CCPoint( Current.x * PTM_RATIO, Current.y * PTM_RATIO );
     }
     
     ccDrawPoly( DrawPoints, BodyShape.GetVertexCount(), false );

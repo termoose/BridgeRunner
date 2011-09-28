@@ -26,18 +26,28 @@ public:
     virtual void draw();
 
     virtual void ccTouchesEnded( CCSet *touches, CCEvent *event );
-    virtual void ccTouchesBegin( CCSet *touches, CCEvent *event );
+    virtual void ccTouchesBegan( CCSet *touches, CCEvent *event );
+    virtual void ccTouchesMoved( CCSet *touches, CCEvent *event );
 
     void tick( ccTime dt );
     
 protected:
-    void ClearTouches();
+    // Conversion functions
+    b2Vec2 CCToBoxVec( CCPoint Point );
+    CCPoint BoxToCCVec( b2Vec2 Point );
     
-    Physics *World;
     CCSize ScreenSize;
     
-    // Pair of < StartTouches, EndTouches >
-    std::pair< std::vector< b2Vec2 >, std::vector< b2Vec2 > > Touches;
+    Physics *World;
+    
+    // Our start and end touches
+    b2Vec2 StartTouch;
+    b2Vec2 StopTouch;
+    
+private:
+    b2Vec2 SegmentStart;
+    b2Vec2 SegmentStop;
+
 };
 
 #endif
