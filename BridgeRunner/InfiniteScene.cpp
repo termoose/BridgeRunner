@@ -3,7 +3,7 @@
 //  BridgeRunner
 //
 //  Created by Ole Andre Birkedal on 9/27/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Extab. All rights reserved.
 //
 
 #include <iostream>

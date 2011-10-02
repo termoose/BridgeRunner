@@ -3,7 +3,7 @@
 //  BuridgeES
 //
 //  Created by Ole Andre Birkedal on 8/7/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Extab. All rights reserved.
 //
 
 #ifndef BuridgeES_TestScene_h
