@@ -16,6 +16,9 @@ PhyObj::PhyObj( const b2Vec2 &Pos, float Angle, bool Dynamic )
     BodyDef.position *= 1 / PTM_RATIO;
     BodyDef.angle = Angle;
     
+    // Every body has a pointer to its PhyObj
+    BodyDef.userData = this;
+    
     // CreateBody
     BodyFixture.density = 1.0;
     BodyFixture.friction = 0.8;

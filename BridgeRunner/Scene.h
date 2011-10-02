@@ -13,6 +13,8 @@
 #include "Box2D.h"
 #include <Physics.h>
 
+#include "BridgeSegment.h"
+
 using namespace cocos2d;
 
 class Scene : public cocos2d::CCLayer
@@ -36,6 +38,11 @@ protected:
     b2Vec2 CCToBoxVec( CCPoint Point );
     CCPoint BoxToCCVec( b2Vec2 Point );
     
+    bool AddBridgeSegment( b2Vec2 Start, b2Vec2 Stop );
+    bool DelBridgeSegment( b2Vec2 Position );
+    
+    std::deque < BridgeSegment * > BridgeSegments;
+    
     CCSize ScreenSize;
     
     Physics *World;
@@ -44,10 +51,15 @@ protected:
     b2Vec2 StartTouch;
     b2Vec2 StopTouch;
     
+    float BridgeLengthEpsilon;
+    int IterationCnt;
+    int IterationsSinceLastClick;
+    
+    bool ScreenTouched;
+    
 private:
     b2Vec2 SegmentStart;
     b2Vec2 SegmentStop;
-
 };
 
 #endif

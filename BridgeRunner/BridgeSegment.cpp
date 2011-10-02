@@ -19,7 +19,7 @@ BridgeSegment::BridgeSegment( const b2Vec2 &Start, const b2Vec2 &Stop ) : PhyObj
     StopPosition *= 1 / PTM_RATIO;
     
     BodyShape.SetAsEdge( StartPosition, StopPosition );
-    BodyShape.m_radius = 0.4;
+    BodyShape.m_radius = 0.3;
 }
 
 void BridgeSegment::Render()

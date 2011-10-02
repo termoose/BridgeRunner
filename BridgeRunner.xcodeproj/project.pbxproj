@@ -173,7 +173,6 @@
 		5FCDAD9A13F1D2F6006C0725 /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5FCDAD9913F1D2F6006C0725 /* AppController.mm */; };
 		5FCDAD9D13F1D2F6006C0725 /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5FCDAD9C13F1D2F6006C0725 /* RootViewController.mm */; };
 		5FCDADA113F1D2F6006C0725 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FCDADA013F1D2F6006C0725 /* AppDelegate.cpp */; };
-		5FCDADA413F1D2F6006C0725 /* HelloWorldScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FCDADA313F1D2F6006C0725 /* HelloWorldScene.cpp */; };
 		5FCDADA613F1D2F6006C0725 /* blocks.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FCDADA513F1D2F6006C0725 /* blocks.png */; };
 		5FCDADB313F1D371006C0725 /* PhyGround.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FCDADAD13F1D371006C0725 /* PhyGround.cpp */; };
 		5FCDADB413F1D371006C0725 /* PhyObj.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FCDADAF13F1D371006C0725 /* PhyObj.cpp */; };
@@ -531,8 +530,6 @@
 		5FCDAD9C13F1D2F6006C0725 /* RootViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = RootViewController.mm; path = ios/RootViewController.mm; sourceTree = "<group>"; };
 		5FCDAD9F13F1D2F6006C0725 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Classes/AppDelegate.h; sourceTree = "<group>"; };
 		5FCDADA013F1D2F6006C0725 /* AppDelegate.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AppDelegate.cpp; path = Classes/AppDelegate.cpp; sourceTree = "<group>"; };
-		5FCDADA213F1D2F6006C0725 /* HelloWorldScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HelloWorldScene.h; path = Classes/HelloWorldScene.h; sourceTree = "<group>"; };
-		5FCDADA313F1D2F6006C0725 /* HelloWorldScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = HelloWorldScene.cpp; path = Classes/HelloWorldScene.cpp; sourceTree = "<group>"; };
 		5FCDADA513F1D2F6006C0725 /* blocks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blocks.png; path = Resources/blocks.png; sourceTree = "<group>"; };
 		5FCDADAD13F1D371006C0725 /* PhyGround.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhyGround.cpp; sourceTree = "<group>"; };
 		5FCDADAE13F1D371006C0725 /* PhyGround.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhyGround.h; sourceTree = "<group>"; };
@@ -1245,8 +1242,6 @@
 				5FCDADB713F1D387006C0725 /* TestScene.h */,
 				5FCDAD9F13F1D2F6006C0725 /* AppDelegate.h */,
 				5FCDADA013F1D2F6006C0725 /* AppDelegate.cpp */,
-				5FCDADA213F1D2F6006C0725 /* HelloWorldScene.h */,
-				5FCDADA313F1D2F6006C0725 /* HelloWorldScene.cpp */,
 				5F13B15E1416A60E009B3D8B /* Scene.cpp */,
 				5F13B1611416A616009B3D8B /* Scene.h */,
 				5FE0D6B314323C290006079A /* InfiniteScene.h */,
@@ -1487,7 +1482,6 @@
 				5FCDAD9A13F1D2F6006C0725 /* AppController.mm in Sources */,
 				5FCDAD9D13F1D2F6006C0725 /* RootViewController.mm in Sources */,
 				5FCDADA113F1D2F6006C0725 /* AppDelegate.cpp in Sources */,
-				5FCDADA413F1D2F6006C0725 /* HelloWorldScene.cpp in Sources */,
 				5FCDADB313F1D371006C0725 /* PhyGround.cpp in Sources */,
 				5FCDADB413F1D371006C0725 /* PhyObj.cpp in Sources */,
 				5FCDADB513F1D371006C0725 /* Physics.cpp in Sources */,

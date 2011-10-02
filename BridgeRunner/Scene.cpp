@@ -21,6 +21,12 @@ Scene::Scene()
     
     // Create the physics object
     World = new Physics();
+    
+    BridgeLengthEpsilon = 10e-3;
+    
+    IterationCnt = 0;
+    
+    ScreenTouched = false;
 }
 
 Scene::~Scene()
@@ -38,8 +44,12 @@ void Scene::draw()
     glLineWidth( 2.0 );
     World->RenderAll();
 
-    glColor4f( 1.0, 0.0, 0.0, 1.0 );
-    ccDrawLine( BoxToCCVec( SegmentStart ), BoxToCCVec( SegmentStop ) );
+    if( ScreenTouched )
+    {
+        // Draw the bridge indication
+        glColor4f( 1.0, 0.0, 0.0, 1.0 );
+        ccDrawLine( BoxToCCVec( SegmentStart ), BoxToCCVec( SegmentStop ) );
+    }
     
 	glEnable(GL_TEXTURE_2D);
 	glEnableClientState(GL_COLOR_ARRAY);
@@ -58,6 +68,12 @@ CCPoint Scene::BoxToCCVec( b2Vec2 Point )
 
 void Scene::tick( cocos2d::ccTime dt )
 {
+    IterationCnt++;
+    
+    // This is being reset every time the user touches the screen,
+    // user for double click logic
+    IterationsSinceLastClick++;
+
     World->DoStep();
 }
 
@@ -92,11 +108,59 @@ void Scene::ccTouchesBegan( cocos2d::CCSet *touches, cocos2d::CCEvent *event )
         if( !touch )
             break;
         
+        // Set flag to indicate that screen is currently being touched
+        ScreenTouched = true;
+        
         CCPoint location = touch->locationInView( touch->view() );
         location = CCDirector::sharedDirector()->convertToGL( location );
         
         StartTouch = CCToBoxVec( location );
+        
+        // If user clicked twice in 30 iterations it is considered a double-click
+        // FIXME: generalize this functionality
+        if( IterationsSinceLastClick < 30 )
+        {
+            DelBridgeSegment( StartTouch );
+        }
+        
+        IterationsSinceLastClick = 0;
     }
+}
+
+bool Scene::AddBridgeSegment( b2Vec2 Start, b2Vec2 Stop )
+{
+    b2Vec2 StartStopDiff = Start - Stop;
+
+    // Do not add bridge segment if it is too small. We do not want tiny
+    // 5-10 pixel size bridge segments, difficult to delete.
+    if( b2Dot( StartStopDiff, StartStopDiff ) < BridgeLengthEpsilon )
+        return false;
+    
+    BridgeSegment *NewSegment = new BridgeSegment( Start, Stop );
+    
+    World->AddPhyObj( NewSegment );
+    BridgeSegments.push_back( NewSegment );
+    
+    return true;
+}
+
+bool Scene::DelBridgeSegment( b2Vec2 Position )
+{
+    PhyObj *Selected = World->GetObjAtPosition( Position );
+    //BridgeSegment *Segment = dynamic_cast< BridgeSegment * >( Selected );
+    
+    // Selected object is not a bridge segment
+//    if( !Segment )
+//        return false;
+    
+    if( Selected )
+        std::cout << "Info: " << Selected->GetPosition().x << " " << Selected->GetPosition().y << std::endl;
+    //std::cout << "Info: " << Segment->GetPosition().x << " " << Segment->GetPosition().y << std::endl;
+    
+    // Remove the oldest bridge segment
+    BridgeSegments.pop_front();
+    
+    return true;
 }
 
 void Scene::ccTouchesEnded( cocos2d::CCSet *touches, cocos2d::CCEvent* event )
@@ -112,10 +176,13 @@ void Scene::ccTouchesEnded( cocos2d::CCSet *touches, cocos2d::CCEvent* event )
 		if( !touch )
 			break;
         
+        // Finger released from screen, no longer touched
+        ScreenTouched = false;
+        
         CCPoint location = touch->locationInView( touch->view() );
 		location = CCDirector::sharedDirector()->convertToGL( location );
         
-        if( b2Dot( SegmentStart - SegmentStop, SegmentStart - SegmentStop ) > 5.0 )
+        if( b2Dot( SegmentStart - SegmentStop, SegmentStart - SegmentStop ) > 50.0 )
         {
             World->AddPhyObj( new BridgeSegment( SegmentStart, SegmentStop ) );
         }

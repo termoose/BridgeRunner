@@ -20,7 +20,7 @@ class PhyObj
 {
 public:
     PhyObj( const b2Vec2 &Pos, float Angle, bool Dynamic );
-    ~PhyObj();
+    virtual ~PhyObj();
     
     virtual void Create();
     virtual void Render() = 0;

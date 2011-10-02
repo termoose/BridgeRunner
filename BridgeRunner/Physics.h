@@ -16,6 +16,8 @@
 #include "Box2D.h"
 #include "PhyObj.h"
 
+#include <deque>
+
 // Ratio between Box2D coordinates and screen coordinates
 #define PTM_RATIO (float32)(32.0)
 
@@ -35,6 +37,8 @@ public:
     PhyObj *GetPhyObj( const int32 &Id ) const;
     
     void RenderAll(); // Renders all physical objects in object list
+    
+    PhyObj *GetObjAtPosition( const b2Vec2 &Position );
 
     void DoStep();
 
@@ -51,6 +55,26 @@ private:
     int32 PosIters;
     
     int32 ObjectIdx;
+};
+
+
+// QueryCallback class used for detecting mouse clicks etc.
+class QueryCallback : public b2QueryCallback
+{
+public:
+    QueryCallback()
+    {
+        m_body = NULL;
+    }
+    
+    bool ReportFixture( b2Fixture* fixture )
+    {
+        m_body = fixture->GetBody();
+        
+        return true;
+    }
+    
+    b2Body *m_body;
 };
 
 #endif

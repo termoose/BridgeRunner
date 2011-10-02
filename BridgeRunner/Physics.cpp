@@ -61,6 +61,44 @@ PhyObj *Physics::GetPhyObj( const int32 &Id ) const
     return Result->second;
 }
 
+PhyObj *Physics::GetObjAtPosition( const b2Vec2 &Position )
+{
+    b2AABB PositionBox;
+
+    b2Vec2 BoxDelta( 0.1, 0.1 );
+    BoxDelta *= 1.0 / PTM_RATIO;
+    
+    b2Vec2 QueryPosition = Position;
+    
+    QueryPosition *= 1.0 / PTM_RATIO;
+    
+    PositionBox.lowerBound = QueryPosition - BoxDelta;
+    PositionBox.upperBound = QueryPosition + BoxDelta;
+    
+    QueryCallback callback;
+    
+    World->QueryAABB( &callback, PositionBox );
+    
+    b2Body *SelectedBody = callback.m_body;
+    
+    if( SelectedBody )
+    {
+        std::cout << "Body selected! NEW!" << std::endl;
+        
+        return static_cast< PhyObj * >( SelectedBody->GetUserData() );
+    }
+    
+    //if( SelectedFixture )
+    {
+        //std::cout << "Body selected!" << std::endl;
+        
+        //b2Body *SelectedBody = SelectedFixture->GetBody();
+        //return static_cast< PhyObj * >( SelectedBody->GetUserData() );
+    }
+
+    return NULL;
+}
+
 bool Physics::RemPhyObj( const int32 &Id )
 {
     PhyObj *Object = GetPhyObj( Id );
