@@ -23,6 +23,8 @@ public:
 private:
     b2Vec2 StartPosition;
     b2Vec2 StopPosition;
+    
+    b2EdgeShape EdgeShape;
 };
 
 #endif

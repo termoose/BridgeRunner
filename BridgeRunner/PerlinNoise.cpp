@@ -47,7 +47,7 @@ float PerlinNoise::InterpolatedNoise( float x )
     return CosineInterpolation( v1, v2, FraqX );
 }
 
-unsigned int PerlinNoise::Noise( int x )
+float PerlinNoise::Noise( int x )
 {
     x = (x << 13) ^ x;
 

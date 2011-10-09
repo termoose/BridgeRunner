@@ -19,7 +19,7 @@ public:
     float GetNoise( float x );
     
 private:
-    unsigned int Noise( int x );
+    float Noise( int x );
     float SmoothNoise( float x );
     float CosineInterpolation( float a, float b, float x );
     float InterpolatedNoise( float x );

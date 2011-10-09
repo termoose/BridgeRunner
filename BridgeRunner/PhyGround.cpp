@@ -51,7 +51,7 @@ void PhyGround::Create()
     for( std::vector< b2Vec2 >::iterator it = Vertices.begin() - 1;
         it != Vertices.end(); ++it )
     {
-        BodyShape.SetAsEdge( *it, *(it + 1) );
+        //BodyShape.SetAsEdge( *it, *(it + 1) );
         Body->CreateFixture( &BodyFixture );
     }
 }

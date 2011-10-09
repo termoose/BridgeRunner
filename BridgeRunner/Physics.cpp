@@ -25,7 +25,7 @@ Physics::Physics() :
     VelIters( 8 ),
     PosIters( 2 )
 {  
-    World = new b2World( Gravity, DoSleep );
+    World = new b2World( Gravity );
 }
 
 Physics::~Physics()
