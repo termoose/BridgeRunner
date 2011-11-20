@@ -47,7 +47,7 @@ void Scene::draw()
     if( ScreenTouched )
     {
         // Draw the bridge indication
-        glColor4f( 1.0, 0.0, 0.0, 1.0 );
+        glColor4f( 1.0, 0.0, 0.0, 0.0 );
         ccDrawLine( BoxToCCVec( SegmentStart ), BoxToCCVec( SegmentStop ) );
     }
     
@@ -182,11 +182,7 @@ void Scene::ccTouchesEnded( cocos2d::CCSet *touches, cocos2d::CCEvent* event )
         CCPoint location = touch->locationInView( touch->view() );
 		location = CCDirector::sharedDirector()->convertToGL( location );
         
-        if( b2Dot( SegmentStart - SegmentStop, SegmentStart - SegmentStop ) > 50.0 )
-        {
-            World->AddPhyObj( new BridgeSegment( SegmentStart, SegmentStop ) );
-        }
-        
+        AddBridgeSegment( SegmentStart, SegmentStop );        
 	}
 }
 

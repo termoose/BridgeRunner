@@ -20,7 +20,7 @@ public:
     
     virtual void Render();
 
-private:
+protected:
     b2Vec2 StartPosition;
     b2Vec2 StopPosition;
     

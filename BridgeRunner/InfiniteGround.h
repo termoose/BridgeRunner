@@ -10,19 +10,24 @@
 #define BridgeRunner_InfiniteGround_h
 
 #include "PhyObj.h"
+#include "PerlinNoise.h"
 
-class InfiniteGround
+class InfiniteGround : public PhyObj
 {
 public:
     InfiniteGround();
     ~InfiniteGround();
     
-    void AddPoint( b2Vec2 &Point );
+    void AddPoint( float Point );
+    bool RemovePoint();
     
-public:
-    b2ChainShape ChainShape;
-    std::deque< b2Vec2 > Vertices;
-
+    virtual void Render();
+    
+private:
+    b2ChainShape GroundShape;
+    b2Vec2 Points[ 12 ];
+    
+    PerlinNoise Noise;
 };
 
 #endif

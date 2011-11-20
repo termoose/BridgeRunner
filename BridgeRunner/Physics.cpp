@@ -10,8 +10,8 @@
 #include "Physics.h"
 
 // How to use this:
-// Create PhyObj objects and use AddPhyObj to add them the the physics
-// using AddPhyObj
+// Create PhyObj objects and add them the the physics using AddPhyObj
+
 Physics::Physics() : 
     // Start counting the unique object Id at 0
     ObjectIdx( 0 ),
@@ -61,6 +61,8 @@ PhyObj *Physics::GetPhyObj( const int32 &Id ) const
     return Result->second;
 }
 
+// FIXME: This does not currently work correctly for long bridge segments,
+// since the AABB is too big. Make it work with rotated bounding boxes
 PhyObj *Physics::GetObjAtPosition( const b2Vec2 &Position )
 {
     b2AABB PositionBox;

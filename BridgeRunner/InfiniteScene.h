@@ -10,7 +10,6 @@
 #define BridgeRunner_InfiniteScene_h
 
 #include "Scene.h"
-#include "PhyGround.h"
 
 class InfiniteScene : public Scene
 {
@@ -23,7 +22,6 @@ public:
 
 
 private:
-    PhyGround *Ground;
     
 };
 
