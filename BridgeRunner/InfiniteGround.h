@@ -11,21 +11,27 @@
 
 #include "PhyObj.h"
 #include "PerlinNoise.h"
+#include "GroundSegment.h"
 
-class InfiniteGround : public PhyObj
+#include <deque>
+
+class InfiniteGround
 {
 public:
     InfiniteGround();
     ~InfiniteGround();
     
-    void AddPoint( float Point );
+    void AddPoint( float NewPoint );
     bool RemovePoint();
     
-    virtual void Render();
+    void RecreateGround();
+    void ScrollGround( float Speed );
     
 private:
     b2ChainShape GroundShape;
-    b2Vec2 Points[ 12 ];
+    
+    std::deque< b2Vec2 > Points;
+    std::deque< GroundSegment * > GroundSegments;
     
     PerlinNoise Noise;
 };

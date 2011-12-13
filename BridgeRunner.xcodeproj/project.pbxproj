@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5F13B15F1416A60E009B3D8B /* Scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F13B15E1416A60E009B3D8B /* Scene.cpp */; };
+		5F3F70C41496B21E00552416 /* GroundSegment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F3F70C31496B21E00552416 /* GroundSegment.cpp */; };
 		5F54B7F213F5D73D009CE249 /* BridgeSegment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F54B7F113F5D73C009CE249 /* BridgeSegment.cpp */; };
 		5F54B7F613F5DBB5009CE249 /* VehicleObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F54B7F513F5DBB5009CE249 /* VehicleObject.cpp */; };
 		5F5F368D13FC351700FA5575 /* PhyJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F5F368C13FC351700FA5575 /* PhyJoint.cpp */; };
@@ -186,16 +187,16 @@
 		5FCDAD9D13F1D2F6006C0725 /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5FCDAD9C13F1D2F6006C0725 /* RootViewController.mm */; };
 		5FCDADA113F1D2F6006C0725 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FCDADA013F1D2F6006C0725 /* AppDelegate.cpp */; };
 		5FCDADA613F1D2F6006C0725 /* blocks.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FCDADA513F1D2F6006C0725 /* blocks.png */; };
-		5FCDADB313F1D371006C0725 /* PhyGround.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FCDADAD13F1D371006C0725 /* PhyGround.cpp */; };
 		5FCDADB413F1D371006C0725 /* PhyObj.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FCDADAF13F1D371006C0725 /* PhyObj.cpp */; };
 		5FCDADB513F1D371006C0725 /* Physics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FCDADB113F1D371006C0725 /* Physics.cpp */; };
-		5FCDADB813F1D387006C0725 /* TestScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FCDADB613F1D387006C0725 /* TestScene.cpp */; };
 		5FE0D6B614323CDD0006079A /* InfiniteScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FE0D6B514323CDD0006079A /* InfiniteScene.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5F13B15E1416A60E009B3D8B /* Scene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Scene.cpp; sourceTree = "<group>"; };
 		5F13B1611416A616009B3D8B /* Scene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scene.h; sourceTree = "<group>"; };
+		5F3F70C21496B1D800552416 /* GroundSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroundSegment.h; sourceTree = "<group>"; };
+		5F3F70C31496B21E00552416 /* GroundSegment.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GroundSegment.cpp; sourceTree = "<group>"; };
 		5F54B7F113F5D73C009CE249 /* BridgeSegment.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BridgeSegment.cpp; sourceTree = "<group>"; };
 		5F54B7F413F5D75B009CE249 /* BridgeSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgeSegment.h; sourceTree = "<group>"; };
 		5F54B7F513F5DBB5009CE249 /* VehicleObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VehicleObject.cpp; sourceTree = "<group>"; };
@@ -566,14 +567,10 @@
 		5FCDAD9F13F1D2F6006C0725 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Classes/AppDelegate.h; sourceTree = "<group>"; };
 		5FCDADA013F1D2F6006C0725 /* AppDelegate.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AppDelegate.cpp; path = Classes/AppDelegate.cpp; sourceTree = "<group>"; };
 		5FCDADA513F1D2F6006C0725 /* blocks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blocks.png; path = Resources/blocks.png; sourceTree = "<group>"; };
-		5FCDADAD13F1D371006C0725 /* PhyGround.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhyGround.cpp; sourceTree = "<group>"; };
-		5FCDADAE13F1D371006C0725 /* PhyGround.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhyGround.h; sourceTree = "<group>"; };
 		5FCDADAF13F1D371006C0725 /* PhyObj.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhyObj.cpp; sourceTree = "<group>"; };
 		5FCDADB013F1D371006C0725 /* PhyObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhyObj.h; sourceTree = "<group>"; };
 		5FCDADB113F1D371006C0725 /* Physics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Physics.cpp; sourceTree = "<group>"; };
 		5FCDADB213F1D371006C0725 /* Physics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Physics.h; sourceTree = "<group>"; };
-		5FCDADB613F1D387006C0725 /* TestScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestScene.cpp; sourceTree = "<group>"; };
-		5FCDADB713F1D387006C0725 /* TestScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestScene.h; sourceTree = "<group>"; };
 		5FE0D6B314323C290006079A /* InfiniteScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfiniteScene.h; sourceTree = "<group>"; };
 		5FE0D6B514323CDD0006079A /* InfiniteScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InfiniteScene.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1300,8 +1297,6 @@
 		5FCDAD9E13F1D2F6006C0725 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				5FCDADB613F1D387006C0725 /* TestScene.cpp */,
-				5FCDADB713F1D387006C0725 /* TestScene.h */,
 				5FCDAD9F13F1D2F6006C0725 /* AppDelegate.h */,
 				5FCDADA013F1D2F6006C0725 /* AppDelegate.cpp */,
 				5F13B15E1416A60E009B3D8B /* Scene.cpp */,
@@ -1317,8 +1312,6 @@
 		5FCDADAC13F1D347006C0725 /* Physics */ = {
 			isa = PBXGroup;
 			children = (
-				5FCDADAD13F1D371006C0725 /* PhyGround.cpp */,
-				5FCDADAE13F1D371006C0725 /* PhyGround.h */,
 				5FCDADAF13F1D371006C0725 /* PhyObj.cpp */,
 				5FCDADB013F1D371006C0725 /* PhyObj.h */,
 				5FCDADB113F1D371006C0725 /* Physics.cpp */,
@@ -1333,6 +1326,8 @@
 				5F5F368C13FC351700FA5575 /* PhyJoint.cpp */,
 				5F91A83C1442163C00F7137C /* InfiniteGround.h */,
 				5F91A83D144216A400F7137C /* InfiniteGround.cpp */,
+				5F3F70C21496B1D800552416 /* GroundSegment.h */,
+				5F3F70C31496B21E00552416 /* GroundSegment.cpp */,
 			);
 			name = Physics;
 			sourceTree = "<group>";
@@ -1546,10 +1541,8 @@
 				5FCDAD9A13F1D2F6006C0725 /* AppController.mm in Sources */,
 				5FCDAD9D13F1D2F6006C0725 /* RootViewController.mm in Sources */,
 				5FCDADA113F1D2F6006C0725 /* AppDelegate.cpp in Sources */,
-				5FCDADB313F1D371006C0725 /* PhyGround.cpp in Sources */,
 				5FCDADB413F1D371006C0725 /* PhyObj.cpp in Sources */,
 				5FCDADB513F1D371006C0725 /* Physics.cpp in Sources */,
-				5FCDADB813F1D387006C0725 /* TestScene.cpp in Sources */,
 				5F54B7F213F5D73D009CE249 /* BridgeSegment.cpp in Sources */,
 				5F54B7F613F5DBB5009CE249 /* VehicleObject.cpp in Sources */,
 				5F8BD40113FAF5030052463F /* PhyWheel.cpp in Sources */,
@@ -1570,6 +1563,7 @@
 				5F91A83A1442100800F7137C /* b2RopeJoint.cpp in Sources */,
 				5F91A83B1442100800F7137C /* b2WheelJoint.cpp in Sources */,
 				5F91A83E144216A400F7137C /* InfiniteGround.cpp in Sources */,
+				5F3F70C41496B21E00552416 /* GroundSegment.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

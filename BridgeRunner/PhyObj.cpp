@@ -47,6 +47,17 @@ void PhyObj::AddTorque( float32 Torque )
     Body->ApplyTorque( Torque );
 }
 
+// Use impulses to move the body at a constant speed
+void PhyObj::SetSpeed( float DesiredVelocity )
+{
+    b2Vec2 CurrentVel = GetBody()->GetLinearVelocity();
+    
+    float VelocityChange = DesiredVelocity - CurrentVel.x;
+    float Impulse = GetBody()->GetMass() * VelocityChange;
+    
+    GetBody()->ApplyLinearImpulse( b2Vec2( Impulse, 0.0 ), GetBody()->GetWorldCenter() );
+}
+
 void PhyObj::Create()
 {
     // If it has a parent, transform it into local space for that object

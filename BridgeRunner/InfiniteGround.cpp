@@ -11,36 +11,35 @@
 
 using namespace cocos2d;
 
-InfiniteGround::InfiniteGround() : PhyObj( b2Vec2(0.0, 0.0), 0.0, false ),
-    Noise( 0.1, 1.0 )
+InfiniteGround::InfiniteGround() : Noise( 0.1, 1.0 )
 {
-    for( int i = 0; i < sizeof(Points)/sizeof(*Points); ++i )
-    {
-        //GroundShape.SetNextVertex( b2Vec2((i * 50.0) / PTM_RATIO, (sin( i * 10.0)*20 + 100.0) / PTM_RATIO) );
-        Points[ i ].Set( (i * 49.0) / PTM_RATIO, (sin( i * 5.0)*40 + 100.0) / PTM_RATIO );
-    }
-    
-    GroundShape.CreateChain( Points, sizeof(Points)/sizeof(*Points) );
-    //GroundShape.SetNextVertex( b2Vec)
-    BodyFixture.shape = &GroundShape;
 }
 
 InfiniteGround::~InfiniteGround()
 {
 }
 
-void InfiniteGround::Render()
+void InfiniteGround::RecreateGround()
 {
-    for( int i = 0; i < sizeof(Points)/sizeof(*Points) - 1; ++i )
-    {
-        ccDrawLine( CCPoint( Points[ i ].x * 32, Points[ i ].y * 32), 
-                    CCPoint( Points[ i+1 ].x * 32, Points[ i+1 ].y * 32) );
-    }
+
 }
 
-void InfiniteGround::AddPoint( float Point )
+void InfiniteGround::ScrollGround( float Speed )
 {
 
+}
+
+void InfiniteGround::AddPoint( float NewPoint )
+{
+    b2Vec2 NewPointVector( NewPoint / PTM_RATIO, (Noise.GetNoise( NewPoint / 30.0) * 80 + 100) / PTM_RATIO );
+    Points.push_back( NewPointVector );
+    
+    if( Points.size() > 1 )
+    {
+        GroundSegment *NewSegment = new GroundSegment( Points[ Points.size() - 2 ], Points.back() );
+        //World->AddPhyObj( NewSegment );
+        GroundSegments.push_back( NewSegment );
+    }
 }
 
 bool InfiniteGround::RemovePoint()

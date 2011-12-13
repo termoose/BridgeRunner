@@ -39,6 +39,8 @@ public:
     void RenderAll(); // Renders all physical objects in object list
     
     PhyObj *GetObjAtPosition( const b2Vec2 &Position );
+    
+    float32 GetTimeStep();
 
     void DoStep();
 

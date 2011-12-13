@@ -51,6 +51,11 @@ void Physics::AddPhyObj( PhyObj *Obj )
     ObjectIdx++;
 }
 
+float32 Physics::GetTimeStep()
+{
+    return TimeStep;
+}
+
 PhyObj *Physics::GetPhyObj( const int32 &Id ) const
 {
     std::map< int32, PhyObj * >::const_iterator Result = Objects.find( Id );

@@ -25,5 +25,5 @@ PhyWheel::~PhyWheel()
 void PhyWheel::Render()
 {
     CCPoint Center = CCPoint( GetPosition().x * PTM_RATIO, GetPosition().y * PTM_RATIO );
-    ccDrawCircle( Center, BodyCircleShape.m_radius * PTM_RATIO, GetAngle(), 16, false );
+    ccDrawCircle( Center, BodyCircleShape.m_radius * PTM_RATIO, GetAngle(), 8, false );
 }

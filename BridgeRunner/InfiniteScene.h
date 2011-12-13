@@ -10,6 +10,9 @@
 #define BridgeRunner_InfiniteScene_h
 
 #include "Scene.h"
+#include "PhyWheel.h"
+#include "PerlinNoise.h"
+#include "GroundSegment.h"
 
 class InfiniteScene : public Scene
 {
@@ -19,10 +22,18 @@ public:
     
     static cocos2d::CCScene *scene();
     void draw();
+    
+    void AddPoint( float NewPoint );
+    void RemovePoint();
 
 
 private:
+    PhyWheel *CircleTest;
     
+    std::deque< b2Vec2 > Points;
+    std::deque< GroundSegment * > GroundSegments;
+    
+    PerlinNoise Noise;
 };
 
 #endif

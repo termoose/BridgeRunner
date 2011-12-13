@@ -9,7 +9,6 @@
 #include "AppDelegate.h"
 
 #include "cocos2d.h"
-#include "TestScene.h"
 #include "InfiniteScene.h"
 
 USING_NS_CC;

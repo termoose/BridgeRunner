@@ -36,6 +36,8 @@ public:
     
     void SetOwner( Physics *PhysicsPtr );
     Physics *GetOwner();
+    
+    void SetSpeed( float DesiredVelocity );
 
 protected:
     b2Body *Body;
