@@ -16,11 +16,6 @@ GroundSegment::GroundSegment( const b2Vec2 &Start, const b2Vec2 &Stop ) : Bridge
     EdgeShape.m_radius = 0.01;
 }
 
-GroundSegment::~GroundSegment()
-{
-    
-}
-
 void GroundSegment::Render()
 {
     b2Vec2 WorldStart = Body->GetWorldPoint( StartPosition );

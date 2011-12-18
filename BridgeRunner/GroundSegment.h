@@ -15,8 +15,7 @@ class GroundSegment : public BridgeSegment
 {
 public:
     GroundSegment( const b2Vec2 &Start, const b2Vec2 &Stop );
-    ~GroundSegment();
-    
+
     virtual void Render();
     
 private:

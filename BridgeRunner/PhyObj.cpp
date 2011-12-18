@@ -11,7 +11,7 @@
 
 PhyObj::PhyObj( const b2Vec2 &Pos, float Angle, bool Dynamic )
 {
-    BodyDef.type = Dynamic ? b2_dynamicBody : b2_staticBody;
+    BodyDef.type = Dynamic ? b2_dynamicBody : b2_kinematicBody;
     BodyDef.position = Pos;
     BodyDef.position *= 1 / PTM_RATIO;
     BodyDef.angle = Angle;
@@ -21,7 +21,7 @@ PhyObj::PhyObj( const b2Vec2 &Pos, float Angle, bool Dynamic )
     
     // CreateBody
     BodyFixture.density = 1.0;
-    BodyFixture.friction = 0.8;
+    BodyFixture.friction = 0.1;
     
     // We define BodyShape in derived classes
     BodyFixture.shape = &BodyShape;
@@ -33,6 +33,8 @@ PhyObj::PhyObj( const b2Vec2 &Pos, float Angle, bool Dynamic )
 
 PhyObj::~PhyObj()
 {
+    std::cout << "Calling ~PhyObj()!" << std::endl;
+    Owner->RemPhyObj( ObjectID );
     Owner->GetWorld()->DestroyBody( Body );
     Body = NULL;
 }
@@ -47,14 +49,17 @@ void PhyObj::AddTorque( float32 Torque )
     Body->ApplyTorque( Torque );
 }
 
+void PhyObj::SetObjectID( int32 ID )
+{
+    ObjectID = ID;
+}
+
 // Use impulses to move the body at a constant speed
 void PhyObj::SetSpeed( float DesiredVelocity )
-{
-    b2Vec2 CurrentVel = GetBody()->GetLinearVelocity();
-    
-    float VelocityChange = DesiredVelocity - CurrentVel.x;
+{    
+    float VelocityChange = DesiredVelocity - GetBody()->GetLinearVelocity().x;
     float Impulse = GetBody()->GetMass() * VelocityChange;
-    
+
     GetBody()->ApplyLinearImpulse( b2Vec2( Impulse, 0.0 ), GetBody()->GetWorldCenter() );
 }
 
@@ -79,6 +84,12 @@ float32 PhyObj::GetAngle() const
 b2Body *PhyObj::GetBody() const
 {
     return Body;
+}
+
+void PhyObj::SetLinearVelocity( const b2Vec2 &Vel )
+{
+    if( Body )
+        Body->SetLinearVelocity( Vel );
 }
 
 void PhyObj::AddChild( PhyObj *Obj )

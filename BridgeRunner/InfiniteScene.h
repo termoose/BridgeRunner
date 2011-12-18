@@ -33,6 +33,8 @@ private:
     std::deque< b2Vec2 > Points;
     std::deque< GroundSegment * > GroundSegments;
     
+    void MoveGround( float Speed );
+    
     PerlinNoise Noise;
 };
 

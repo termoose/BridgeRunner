@@ -38,6 +38,9 @@ public:
     Physics *GetOwner();
     
     void SetSpeed( float DesiredVelocity );
+    void SetObjectID( int32 ID );
+    
+    void SetLinearVelocity( const b2Vec2 &Vel );
 
 protected:
     b2Body *Body;
@@ -51,6 +54,7 @@ protected:
     Physics *Owner;
     
 private:
+    int32 ObjectID;
 
 };
 

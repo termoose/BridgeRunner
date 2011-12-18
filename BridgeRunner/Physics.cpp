@@ -47,6 +47,7 @@ void Physics::AddPhyObj( PhyObj *Obj )
     Objects[ ObjectIdx ] = Obj;
     Obj->SetOwner( this );
     Obj->Create();
+    Obj->SetObjectID( ObjectIdx );
 
     ObjectIdx++;
 }

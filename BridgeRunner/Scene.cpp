@@ -10,23 +10,16 @@
 #include "BridgeSegment.h"
 #include "Scene.h"
 
-Scene::Scene()
+Scene::Scene() : 
+BridgeLengthEpsilon( 0.1 ), IterationCnt( 0 ), ScreenTouched( false ), ScreenSize( CCDirector::sharedDirector()->getWinSize() )
 {
     setIsTouchEnabled( true );
     setIsAccelerometerEnabled( false );
-    
-    ScreenSize = CCDirector::sharedDirector()->getWinSize();
-    
+
     schedule( schedule_selector( Scene::tick ) );
     
     // Create the physics object
     World = new Physics();
-    
-    BridgeLengthEpsilon = 10e-3;
-    
-    IterationCnt = 0;
-    
-    ScreenTouched = false;
 }
 
 Scene::~Scene()
@@ -120,7 +113,7 @@ void Scene::ccTouchesBegan( cocos2d::CCSet *touches, cocos2d::CCEvent *event )
         // FIXME: generalize this functionality
         if( IterationsSinceLastClick < 30 )
         {
-            DelBridgeSegment( StartTouch );
+            //DelBridgeSegment( StartTouch );
         }
         
         IterationsSinceLastClick = 0;
@@ -133,13 +126,21 @@ bool Scene::AddBridgeSegment( b2Vec2 Start, b2Vec2 Stop )
 
     // Do not add bridge segment if it is too small. We do not want tiny
     // 5-10 pixel size bridge segments, difficult to delete.
+    
+    std::cout << "Adding bridge segment size: " << b2Dot( StartStopDiff, StartStopDiff ) << std::endl;
+    
     if( b2Dot( StartStopDiff, StartStopDiff ) < BridgeLengthEpsilon )
+    {
+        std::cout << "DO NOT ADD!" << std::endl;
         return false;
+    }
     
     BridgeSegment *NewSegment = new BridgeSegment( Start, Stop );
     
     World->AddPhyObj( NewSegment );
     BridgeSegments.push_back( NewSegment );
+    
+    std::cout << "ADDED!" << std::endl;
     
     return true;
 }
@@ -184,6 +185,9 @@ void Scene::ccTouchesEnded( cocos2d::CCSet *touches, cocos2d::CCEvent* event )
         
         AddBridgeSegment( SegmentStart, SegmentStop );        
 	}
+    
+    SegmentStop.SetZero();
+    SegmentStart.SetZero();
 }
 
 CCScene *Scene::scene()

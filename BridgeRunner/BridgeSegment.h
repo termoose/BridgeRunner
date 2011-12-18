@@ -16,10 +16,12 @@ class BridgeSegment : public PhyObj
 {
 public:
     BridgeSegment( const b2Vec2 &Start, const b2Vec2 &Stop );
-    ~BridgeSegment();
     
     virtual void Render();
 
+    b2Vec2 GetStartPoint();
+    b2Vec2 GetStopPoint();
+    
 protected:
     b2Vec2 StartPosition;
     b2Vec2 StopPosition;

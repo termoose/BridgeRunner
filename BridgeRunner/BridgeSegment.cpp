@@ -24,6 +24,20 @@ BridgeSegment::BridgeSegment( const b2Vec2 &Start, const b2Vec2 &Stop ) : PhyObj
     BodyFixture.shape = &EdgeShape;
 }
 
+b2Vec2 BridgeSegment::GetStopPoint()
+{
+    //b2Vec2 Pos = GetPosition() + StopPosition;
+    b2Vec2 Pos = Body->GetWorldPoint( StopPosition );
+    return b2Vec2( Pos.x * PTM_RATIO, Pos.y * PTM_RATIO );
+}
+
+b2Vec2 BridgeSegment::GetStartPoint()
+{
+    // = GetPosition() - StartPosition;
+    b2Vec2 Pos = Body->GetWorldPoint( StartPosition );
+    return b2Vec2( Pos.x * PTM_RATIO, Pos.y * PTM_RATIO );
+}
+
 void BridgeSegment::Render()
 {
     b2Vec2 WorldStart = Body->GetWorldPoint( StartPosition );
@@ -31,9 +45,4 @@ void BridgeSegment::Render()
 
     ccDrawLine( CCPoint(WorldStart.x * PTM_RATIO, WorldStart.y * PTM_RATIO),
                 CCPoint(WorldStop.x * PTM_RATIO, WorldStop.y * PTM_RATIO) );
-}
-
-BridgeSegment::~BridgeSegment()
-{
-    
 }
