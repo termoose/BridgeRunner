@@ -39,6 +39,7 @@ public:
     
     void SetSpeed( float DesiredVelocity );
     void SetObjectID( int32 ID );
+    int32 GetObjectID();
     
     void SetLinearVelocity( const b2Vec2 &Vel );
 

@@ -117,6 +117,8 @@ bool Physics::RemPhyObj( const int32 &Id )
         return false;
     }
     
+    if( Id == 0 )
+        std::cout << "Deleting 0 object!" << std::endl;
     delete Object;
     Object = NULL;
     

@@ -9,6 +9,7 @@
 #include <iostream>
 #include "BridgeSegment.h"
 #include "Scene.h"
+#include "MenuScene.h"
 
 Scene::Scene() : 
 BridgeLengthEpsilon( 0.1 ), IterationCnt( 0 ), ScreenTouched( false ), ScreenSize( CCDirector::sharedDirector()->getWinSize() )
@@ -20,12 +21,25 @@ BridgeLengthEpsilon( 0.1 ), IterationCnt( 0 ), ScreenTouched( false ), ScreenSiz
     
     // Create the physics object
     World = new Physics();
+    
+    // Create the close button, default for all scenes
+    CloseButton = CCMenuItemImage::itemFromNormalImage( "CloseNormal.png", "CloseSelected.png", this, menu_selector(Scene::MainMenu) );
+    CloseButton->setPosition( CCPoint(ScreenSize.width-10, 10) );
+    SceneMenu = CCMenu::menuWithItem( CloseButton );
+    SceneMenu->setPosition( CCPointZero );
+
+    addChild( SceneMenu );
 }
 
 Scene::~Scene()
 {
     delete World;
     World = NULL;
+}
+
+void Scene::MainMenu( cocos2d::CCObject* pSender )
+{
+    CCDirector::sharedDirector()->replaceScene( MenuScene::scene() );
 }
 
 void Scene::draw()

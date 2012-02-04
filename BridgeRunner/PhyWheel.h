@@ -12,6 +12,8 @@
 #include <Physics.h>
 #include <PhyObj.h>
 
+using namespace cocos2d;
+
 class PhyWheel : public PhyObj
 {
 public:
@@ -21,6 +23,7 @@ public:
     virtual void Render();
 
 private:
+    CCSprite *BallImage;
     b2CircleShape BodyCircleShape;
 };
 

@@ -33,6 +33,8 @@ public:
 
     void tick( ccTime dt );
     
+    void MainMenu( cocos2d::CCObject* pSender );
+    
 protected:
     // Conversion functions
     b2Vec2 CCToBoxVec( CCPoint Point );
@@ -46,6 +48,9 @@ protected:
     CCSize ScreenSize;
     
     Physics *World;
+    
+    CCMenuItemImage *CloseButton;
+    CCMenu *SceneMenu;
     
     // Our start and end touches
     b2Vec2 StartTouch;

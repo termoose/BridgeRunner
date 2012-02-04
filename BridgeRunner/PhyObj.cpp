@@ -20,8 +20,8 @@ PhyObj::PhyObj( const b2Vec2 &Pos, float Angle, bool Dynamic )
     BodyDef.userData = this;
     
     // CreateBody
-    BodyFixture.density = 1.0;
-    BodyFixture.friction = 0.1;
+    BodyFixture.density = 0.1;
+    BodyFixture.friction = 0.5;
     
     // We define BodyShape in derived classes
     BodyFixture.shape = &BodyShape;
@@ -33,8 +33,6 @@ PhyObj::PhyObj( const b2Vec2 &Pos, float Angle, bool Dynamic )
 
 PhyObj::~PhyObj()
 {
-    std::cout << "Calling ~PhyObj()!" << std::endl;
-    Owner->RemPhyObj( ObjectID );
     Owner->GetWorld()->DestroyBody( Body );
     Body = NULL;
 }
@@ -52,6 +50,11 @@ void PhyObj::AddTorque( float32 Torque )
 void PhyObj::SetObjectID( int32 ID )
 {
     ObjectID = ID;
+}
+
+int32 PhyObj::GetObjectID()
+{
+    return ObjectID;
 }
 
 // Use impulses to move the body at a constant speed

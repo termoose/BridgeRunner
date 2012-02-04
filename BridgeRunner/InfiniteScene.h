@@ -26,14 +26,15 @@ public:
     void AddPoint( float NewPoint );
     void RemovePoint();
 
-
 private:
-    PhyWheel *CircleTest;
-    
-    std::deque< b2Vec2 > Points;
+    PhyWheel *RollingCircle;
+    CCSprite *BallImage;
+
     std::deque< GroundSegment * > GroundSegments;
     
-    void MoveGround( float Speed );
+    void MoveScene( float Speed );
+    
+    float LengthCounter;
     
     PerlinNoise Noise;
 };

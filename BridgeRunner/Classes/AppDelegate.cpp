@@ -10,6 +10,7 @@
 
 #include "cocos2d.h"
 #include "InfiniteScene.h"
+#include "MenuScene.h"
 
 USING_NS_CC;
 
@@ -81,7 +82,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     pDirector->enableRetinaDisplay(true);
 
 	// sets landscape mode
-	// pDirector->setDeviceOrientation(kCCDeviceOrientationLandscapeLeft);
+	pDirector->setDeviceOrientation(kCCDeviceOrientationLandscapeLeft);
 
 	// turn on display FPS
 	pDirector->setDisplayFPS(true);
@@ -95,8 +96,11 @@ bool AppDelegate::applicationDidFinishLaunching()
     //CCScene *Test = TestScene::scene();
     //pDirector->runWithScene( Test );
     
-    CCScene *InfTest = InfiniteScene::scene();
-    pDirector->runWithScene( InfTest );
+    //CCScene *InfTest = InfiniteScene::scene();
+    //pDirector->runWithScene( InfTest );
+    
+    CCScene *MenuTest = MenuScene::scene();
+    pDirector->runWithScene( MenuTest );
 
 	// run
 	//pDirector->runWithScene( InfTest );

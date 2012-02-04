@@ -189,7 +189,12 @@
 		5FCDADA613F1D2F6006C0725 /* blocks.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FCDADA513F1D2F6006C0725 /* blocks.png */; };
 		5FCDADB413F1D371006C0725 /* PhyObj.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FCDADAF13F1D371006C0725 /* PhyObj.cpp */; };
 		5FCDADB513F1D371006C0725 /* Physics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FCDADB113F1D371006C0725 /* Physics.cpp */; };
+		5FD55B8D14C5CC230074663C /* MenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FD55B8C14C5CC230074663C /* MenuScene.cpp */; };
 		5FE0D6B614323CDD0006079A /* InfiniteScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FE0D6B514323CDD0006079A /* InfiniteScene.cpp */; };
+		5FF8D24C14DD7AE600F67040 /* menuimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FF8D24B14DD7AE600F67040 /* menuimage.png */; };
+		5FF8D24F14DD80D500F67040 /* new_game_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FF8D24D14DD80D500F67040 /* new_game_down.png */; };
+		5FF8D25014DD80D500F67040 /* new_game.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FF8D24E14DD80D500F67040 /* new_game.png */; };
+		5FF8D25214DDDB3C00F67040 /* rolling_girl.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FF8D25114DDDB3C00F67040 /* rolling_girl.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -571,8 +576,14 @@
 		5FCDADB013F1D371006C0725 /* PhyObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhyObj.h; sourceTree = "<group>"; };
 		5FCDADB113F1D371006C0725 /* Physics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Physics.cpp; sourceTree = "<group>"; };
 		5FCDADB213F1D371006C0725 /* Physics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Physics.h; sourceTree = "<group>"; };
+		5FD55B8A14C4E7180074663C /* MenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuScene.h; sourceTree = "<group>"; };
+		5FD55B8C14C5CC230074663C /* MenuScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MenuScene.cpp; sourceTree = "<group>"; };
 		5FE0D6B314323C290006079A /* InfiniteScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfiniteScene.h; sourceTree = "<group>"; };
 		5FE0D6B514323CDD0006079A /* InfiniteScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InfiniteScene.cpp; sourceTree = "<group>"; };
+		5FF8D24B14DD7AE600F67040 /* menuimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menuimage.png; path = Resources/menuimage.png; sourceTree = "<group>"; };
+		5FF8D24D14DD80D500F67040 /* new_game_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = new_game_down.png; path = Resources/new_game_down.png; sourceTree = "<group>"; };
+		5FF8D24E14DD80D500F67040 /* new_game.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = new_game.png; path = Resources/new_game.png; sourceTree = "<group>"; };
+		5FF8D25114DDDB3C00F67040 /* rolling_girl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rolling_girl.png; path = Resources/rolling_girl.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -651,6 +662,10 @@
 		5FCDAB9813F1D2F3006C0725 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5FF8D25114DDDB3C00F67040 /* rolling_girl.png */,
+				5FF8D24D14DD80D500F67040 /* new_game_down.png */,
+				5FF8D24E14DD80D500F67040 /* new_game.png */,
+				5FF8D24B14DD7AE600F67040 /* menuimage.png */,
 				5FCDAB9913F1D2F3006C0725 /* CloseNormal.png */,
 				5FCDAB9B13F1D2F3006C0725 /* CloseSelected.png */,
 				5FCDAB9D13F1D2F3006C0725 /* Default.png */,
@@ -1305,6 +1320,8 @@
 				5FE0D6B514323CDD0006079A /* InfiniteScene.cpp */,
 				5F8218901438AC6A009CF81A /* PerlinNoise.cpp */,
 				5F8218921438AC74009CF81A /* PerlinNoise.h */,
+				5FD55B8A14C4E7180074663C /* MenuScene.h */,
+				5FD55B8C14C5CC230074663C /* MenuScene.cpp */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1357,6 +1374,9 @@
 /* Begin PBXProject section */
 		5FCDAB7A13F1D2F3006C0725 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
 			buildConfigurationList = 5FCDAB7D13F1D2F3006C0725 /* Build configuration list for PBXProject "BridgeRunner" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -1390,6 +1410,10 @@
 				5FCDABAC13F1D2F3006C0725 /* Icon@2x.png in Resources */,
 				5FCDABAF13F1D2F3006C0725 /* iTunesArtwork in Resources */,
 				5FCDADA613F1D2F6006C0725 /* blocks.png in Resources */,
+				5FF8D24C14DD7AE600F67040 /* menuimage.png in Resources */,
+				5FF8D24F14DD80D500F67040 /* new_game_down.png in Resources */,
+				5FF8D25014DD80D500F67040 /* new_game.png in Resources */,
+				5FF8D25214DDDB3C00F67040 /* rolling_girl.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1564,6 +1588,7 @@
 				5F91A83B1442100800F7137C /* b2WheelJoint.cpp in Sources */,
 				5F91A83E144216A400F7137C /* InfiniteGround.cpp in Sources */,
 				5F3F70C41496B21E00552416 /* GroundSegment.cpp in Sources */,
+				5FD55B8D14C5CC230074663C /* MenuScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1592,7 +1617,7 @@
 					"\"$(PROJECT_NAME)/libs/CocosDenshion/include\"",
 					"\"$(SDKROOT)/usr/include/libxml2\"",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1616,7 +1641,7 @@
 					"\"$(PROJECT_NAME)/libs/CocosDenshion/include\"",
 					"\"$(SDKROOT)/usr/include/libxml2\"",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 			};
@@ -1631,8 +1656,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = BridgeRunner/Prefix.pch;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = BridgeRunner/Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = (
 					"-lxml2",
 					"-lz",
@@ -1652,8 +1678,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = BridgeRunner/Prefix.pch;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = BridgeRunner/Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = (
 					"-lxml2",
 					"-lz",
