@@ -55,7 +55,7 @@ void InfiniteScene::MoveScene( float Speed )
         AddPoint( -Speed );
     
     if( GroundSegments.front()->GetStopPoint().x < 0.0 && GroundSegments.size() > 100 )
-        RemovePoint();
+        RemovePoint(); 
     
     float BallPosition = RollingCircle->GetPosition().x;
     
