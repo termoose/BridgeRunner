@@ -178,6 +178,14 @@ bool Scene::DelBridgeSegment( b2Vec2 Position )
     return true;
 }
 
+void Scene::DeleteOldestSegment()
+{
+    BridgeSegment *Oldest = BridgeSegments.front();
+
+    World->RemPhyObj( Oldest->GetObjectID() );
+    BridgeSegments.pop_front();
+}
+
 void Scene::ccTouchesEnded( cocos2d::CCSet *touches, cocos2d::CCEvent* event )
 {
 	CCSetIterator it;

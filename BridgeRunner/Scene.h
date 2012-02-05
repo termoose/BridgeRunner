@@ -42,6 +42,7 @@ protected:
     
     bool AddBridgeSegment( b2Vec2 Start, b2Vec2 Stop );
     bool DelBridgeSegment( b2Vec2 Position );
+    void DeleteOldestSegment();
     
     std::deque < BridgeSegment * > BridgeSegments;
     

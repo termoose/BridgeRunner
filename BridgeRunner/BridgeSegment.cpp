@@ -24,6 +24,10 @@ BridgeSegment::BridgeSegment( const b2Vec2 &Start, const b2Vec2 &Stop ) : PhyObj
     BodyFixture.shape = &EdgeShape;
 }
 
+BridgeSegment::~BridgeSegment()
+{
+}
+
 b2Vec2 BridgeSegment::GetStopPoint()
 {
     //b2Vec2 Pos = GetPosition() + StopPosition;

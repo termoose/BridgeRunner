@@ -55,12 +55,17 @@ void InfiniteScene::MoveScene( float Speed )
         AddPoint( -Speed );
     
     if( GroundSegments.front()->GetStopPoint().x < 0.0 && GroundSegments.size() > 100 )
-        RemovePoint(); 
+        RemovePoint();
+    
+    if( BridgeSegments.size() > 3 )
+    {
+        DeleteOldestSegment();
+    }
     
     float BallPosition = RollingCircle->GetPosition().x;
     
     // Breaking
-    if( BallPosition * PTM_RATIO > ScreenSize.width * 1.0 )
+    if( BallPosition * PTM_RATIO > ScreenSize.width * 1.0  )
     {
         RollingCircle->SetSpeed( 0.0 );
     }

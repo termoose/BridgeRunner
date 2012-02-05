@@ -17,7 +17,6 @@ PhyWheel::PhyWheel( const b2Vec2 &Pos ) : PhyObj( Pos, 0.0, true )
 
 PhyWheel::~PhyWheel()
 {
-    
 }
 
 void PhyWheel::Render()
