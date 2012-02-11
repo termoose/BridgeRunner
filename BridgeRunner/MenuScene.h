@@ -28,10 +28,9 @@ protected:
     CCMenu *MainMenu;
     CCSize ScreenSize;
     CCSprite *MainMenuImage;
+    CCSprite *MainMenuHeading;
     
     CCMenuItemImage *NewGameButton;
-    
-    std::vector< CCMenuItem * > MenuItems;
     
 };
 

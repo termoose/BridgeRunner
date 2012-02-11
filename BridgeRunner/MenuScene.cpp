@@ -22,6 +22,9 @@ MenuScene::MenuScene() : ScreenSize( CCDirector::sharedDirector()->getWinSize() 
     MainMenuImage->setPosition( CCPoint( 80, ScreenSize.height/2) );
     MainMenuImage->setScale( 0.6 );
     
+    MainMenuHeading = CCSprite::spriteWithFile( "howsherolls_heading.png" );
+    MainMenuHeading->setPosition( CCPoint( ScreenSize.width/2, ScreenSize.height-50) );    
+    
     NewGameButton = CCMenuItemImage::itemFromNormalImage( "new_game.png",
                                                          "new_game_down.png",
                                                          this,
@@ -33,6 +36,7 @@ MenuScene::MenuScene() : ScreenSize( CCDirector::sharedDirector()->getWinSize() 
 
     addChild( MainMenu );
     addChild( MainMenuImage );
+    addChild( MainMenuHeading );
 }
 
 MenuScene::~MenuScene()

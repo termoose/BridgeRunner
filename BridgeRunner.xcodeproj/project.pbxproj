@@ -195,6 +195,7 @@
 		5FF8D24F14DD80D500F67040 /* new_game_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FF8D24D14DD80D500F67040 /* new_game_down.png */; };
 		5FF8D25014DD80D500F67040 /* new_game.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FF8D24E14DD80D500F67040 /* new_game.png */; };
 		5FF8D25214DDDB3C00F67040 /* rolling_girl.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FF8D25114DDDB3C00F67040 /* rolling_girl.png */; };
+		5FF8D25414DED8B900F67040 /* howsherolls_heading.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FF8D25314DED8B900F67040 /* howsherolls_heading.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -584,6 +585,7 @@
 		5FF8D24D14DD80D500F67040 /* new_game_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = new_game_down.png; path = Resources/new_game_down.png; sourceTree = "<group>"; };
 		5FF8D24E14DD80D500F67040 /* new_game.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = new_game.png; path = Resources/new_game.png; sourceTree = "<group>"; };
 		5FF8D25114DDDB3C00F67040 /* rolling_girl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rolling_girl.png; path = Resources/rolling_girl.png; sourceTree = "<group>"; };
+		5FF8D25314DED8B900F67040 /* howsherolls_heading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = howsherolls_heading.png; path = Resources/howsherolls_heading.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -662,6 +664,7 @@
 		5FCDAB9813F1D2F3006C0725 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5FF8D25314DED8B900F67040 /* howsherolls_heading.png */,
 				5FF8D25114DDDB3C00F67040 /* rolling_girl.png */,
 				5FF8D24D14DD80D500F67040 /* new_game_down.png */,
 				5FF8D24E14DD80D500F67040 /* new_game.png */,
@@ -1414,6 +1417,7 @@
 				5FF8D24F14DD80D500F67040 /* new_game_down.png in Resources */,
 				5FF8D25014DD80D500F67040 /* new_game.png in Resources */,
 				5FF8D25214DDDB3C00F67040 /* rolling_girl.png in Resources */,
+				5FF8D25414DED8B900F67040 /* howsherolls_heading.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

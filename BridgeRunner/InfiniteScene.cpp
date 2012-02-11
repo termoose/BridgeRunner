@@ -57,6 +57,8 @@ void InfiniteScene::MoveScene( float Speed )
     if( GroundSegments.front()->GetStopPoint().x < 0.0 && GroundSegments.size() > 100 )
         RemovePoint();
     
+    // If we have more than three segments, we remove the oldest one
+    // Should be set in a file on disk, since it should be possible to purchase more segments
     if( BridgeSegments.size() > 3 )
     {
         DeleteOldestSegment();
