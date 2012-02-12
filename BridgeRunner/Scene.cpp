@@ -182,7 +182,7 @@ void Scene::DeleteOldestSegment()
 {
     BridgeSegment *Oldest = BridgeSegments.front();
 
-    World->RemPhyObj( Oldest->GetObjectID() );
+    World->RemPhyObj( Oldest );
     BridgeSegments.pop_front();
 }
 

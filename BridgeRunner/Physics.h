@@ -34,6 +34,7 @@ public:
     
     void AddPhyObj( PhyObj *Obj );
     bool RemPhyObj( const int32 &Id );
+    bool RemPhyObj( PhyObj *Object );
     PhyObj *GetPhyObj( const int32 &Id ) const;
     
     void RenderAll(); // Renders all physical objects in object list

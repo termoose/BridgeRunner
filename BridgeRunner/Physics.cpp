@@ -107,24 +107,28 @@ PhyObj *Physics::GetObjAtPosition( const b2Vec2 &Position )
     return NULL;
 }
 
-bool Physics::RemPhyObj( const int32 &Id )
+bool Physics::RemPhyObj( PhyObj *Object )
 {
-    PhyObj *Object = GetPhyObj( Id );
-    
     if( Object == NULL )
     {
         std::cerr << "Trying to delete an object that does not exist!" << std::endl;
         return false;
     }
     
-    if( Id == 0 )
-        std::cout << "Deleting 0 object!" << std::endl;
     delete Object;
     Object = NULL;
     
-    Objects.erase( Id );
+    Objects.erase( Object->GetObjectID() );
     
     return true;
+    
+}
+
+bool Physics::RemPhyObj( const int32 &Id )
+{
+    PhyObj *Object = GetPhyObj( Id );
+    
+    return RemPhyObj( Object );
 }
 
 void Physics::DoStep()
