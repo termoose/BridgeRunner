@@ -115,10 +115,10 @@ bool Physics::RemPhyObj( PhyObj *Object )
         return false;
     }
     
+    Objects.erase( Object->GetObjectID() );
+
     delete Object;
     Object = NULL;
-    
-    Objects.erase( Object->GetObjectID() );
     
     return true;
     

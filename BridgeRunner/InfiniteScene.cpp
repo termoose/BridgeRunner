@@ -51,7 +51,7 @@ void InfiniteScene::RemovePoint()
 
 void InfiniteScene::MoveScene( float Speed )
 {
-    if( GroundSegments.back()->GetStopPoint().x < ScreenSize.width * 2.0 )
+    if( GroundSegments.back()->GetStopPoint().x < ScreenSize.width )
         AddPoint( -Speed );
     
     if( GroundSegments.front()->GetStopPoint().x < 0.0 && GroundSegments.size() > 100 )

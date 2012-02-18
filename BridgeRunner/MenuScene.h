@@ -9,8 +9,10 @@
 #ifndef BridgeRunner_MenuScene_h
 #define BridgeRunner_MenuScene_h
 
-#include <vector>
+#include <deque>
+
 #include "cocos2d.h"
+#include "PerlinNoise.h"
 
 using namespace cocos2d;
 
@@ -21,8 +23,14 @@ public:
     ~MenuScene();
     
     static cocos2d::CCScene *scene();
+    virtual void draw();
+    
+    void MoveScene( float Speed );
     
     void StartScene( cocos2d::CCObject* pSender );
+    
+private:
+    void AddPoint( float Offset );
     
 protected:
     CCMenu *MainMenu;
@@ -30,8 +38,13 @@ protected:
     CCSprite *MainMenuImage;
     CCSprite *MainMenuHeading;
     
+    PerlinNoise Noise;
+    
     CCMenuItemImage *NewGameButton;
     
+    std::deque< CCPoint > GroundPoints;    
+    
+    float Counter;
 };
 
 #endif

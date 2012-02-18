@@ -15,8 +15,11 @@ void MenuScene::StartScene( cocos2d::CCObject* pSender )
     CCDirector::sharedDirector()->replaceScene( InfiniteScene::scene() );
 }
 
-MenuScene::MenuScene() : ScreenSize( CCDirector::sharedDirector()->getWinSize() )
+MenuScene::MenuScene() : ScreenSize( CCDirector::sharedDirector()->getWinSize() ), Noise( 0.1, 1.0 ), Counter(ScreenSize.width)
 {
+    for( float i = 0; i < ScreenSize.width; i += ScreenSize.width / 128 )
+        GroundPoints.push_back( CCPoint( i, Noise.GetNoise( i / 30.0) * 80 + 100 ) );
+    
     // Menu Image
     MainMenuImage = CCSprite::spriteWithFile( "menuimage.png" );
     MainMenuImage->setPosition( CCPoint( 80, ScreenSize.height/2) );
@@ -37,6 +40,47 @@ MenuScene::MenuScene() : ScreenSize( CCDirector::sharedDirector()->getWinSize() 
     addChild( MainMenu );
     addChild( MainMenuImage );
     addChild( MainMenuHeading );
+}
+
+void MenuScene::AddPoint( float Offset )
+{
+    CCPoint LastPoint = GroundPoints.back();
+
+    float NewPointPosition = LastPoint.x + Offset;
+    CCPoint NewPoint( NewPointPosition, Noise.GetNoise( Counter / 30.0) * 80 + 100 );
+    
+    GroundPoints.push_back( NewPoint );
+}
+
+void MenuScene::MoveScene( float Speed )
+{
+    if( GroundPoints.size() == 0 || GroundPoints.back().x < ScreenSize.width )
+    {
+        AddPoint( Speed );
+    }
+    
+    // Remove segment
+    if( GroundPoints.front().x < 0 )
+    {
+        GroundPoints.pop_front();
+    }
+    
+    for( std::deque< CCPoint >::iterator it = GroundPoints.begin();
+        it != GroundPoints.end() - 1; ++it )
+    {
+        ccDrawLine( *it, *(it+1) );
+        
+        // Translate points
+        it->x -= Speed;
+    }
+    GroundPoints.back().x -= Speed;
+    
+    Counter += Speed;
+}
+
+void MenuScene::draw()
+{
+    MoveScene( ScreenSize.width / 128.0 );
 }
 
 MenuScene::~MenuScene()
