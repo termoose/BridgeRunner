@@ -38,11 +38,13 @@ protected:
     CCSprite *MainMenuImage;
     CCSprite *MainMenuHeading;
     
+    CCTexture2D *GroundTexture;
+    
     PerlinNoise Noise;
     
     CCMenuItemImage *NewGameButton;
     
-    std::deque< CCPoint > GroundPoints;    
+    std::deque< CCPoint > GroundPoints;
     
     float Counter;
 };

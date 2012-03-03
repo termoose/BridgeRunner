@@ -36,7 +36,7 @@ void InfiniteScene::AddPoint( float NewPointOffset )
     b2Vec2 LastPoint = GroundSegments.back()->GetStopPoint();
     float NewPointPosition = LastPoint.x + NewPointOffset;
 
-    b2Vec2 NewPointVector( NewPointPosition, Noise.GetNoise( (LengthCounter) / 30.0) * 80 + 100 );
+    b2Vec2 NewPointVector( NewPointPosition, Noise.GetNoise( (LengthCounter) / 100.0) * 80 + 100 );
     
     GroundSegment *NewSegment = new GroundSegment( GroundSegments.back()->GetStopPoint(), NewPointVector );
     World->AddPhyObj( NewSegment );
@@ -52,7 +52,7 @@ void InfiniteScene::RemovePoint()
 void InfiniteScene::MoveScene( float Speed )
 {
     if( GroundSegments.back()->GetStopPoint().x < ScreenSize.width )
-        AddPoint( -Speed );
+        AddPoint( Speed );
     
     if( GroundSegments.front()->GetStopPoint().x < 0.0 && GroundSegments.size() > 100 )
         RemovePoint();
@@ -67,7 +67,7 @@ void InfiniteScene::MoveScene( float Speed )
     float BallPosition = RollingCircle->GetPosition().x;
     
     // Breaking
-    if( BallPosition * PTM_RATIO > ScreenSize.width * 1.0  )
+    if( BallPosition * PTM_RATIO > ScreenSize.width  )
     {
         RollingCircle->SetSpeed( 0.0 );
     }
@@ -81,17 +81,17 @@ void InfiniteScene::MoveScene( float Speed )
     for( std::deque< GroundSegment * >::const_iterator it = GroundSegments.begin();
         it != GroundSegments.end(); ++it )
     {
-        (*it)->SetLinearVelocity( b2Vec2( Speed, 0.0 ) );
+        (*it)->SetLinearVelocity( b2Vec2( -Speed, 0.0 ) );
     }
     
     // Move all bridge segments
     for( std::deque< BridgeSegment * >::const_iterator it = BridgeSegments.begin();
         it != BridgeSegments.end(); ++it )
     {        
-        (*it)->SetLinearVelocity( b2Vec2( Speed, 0.0 ) );
+        (*it)->SetLinearVelocity( b2Vec2( -Speed, 0.0 ) );
     }
 
-    LengthCounter += 2.0;
+    LengthCounter += Speed;
 }
 
 void InfiniteScene::draw()
@@ -101,7 +101,7 @@ void InfiniteScene::draw()
     BallImage->setPosition( CCPoint(RollingCircle->GetPosition().x * PTM_RATIO, RollingCircle->GetPosition().y * PTM_RATIO) );
     BallImage->setRotation( -CC_RADIANS_TO_DEGREES(RollingCircle->GetAngle()) );
 
-    MoveScene( -8.0 );
+    MoveScene( 8.0 );
 }
 
 CCScene *InfiniteScene::scene()

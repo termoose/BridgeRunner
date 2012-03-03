@@ -27,6 +27,7 @@
 		5F91A83A1442100800F7137C /* b2RopeJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F91A8361442100800F7137C /* b2RopeJoint.cpp */; };
 		5F91A83B1442100800F7137C /* b2WheelJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F91A8381442100800F7137C /* b2WheelJoint.cpp */; };
 		5F91A83E144216A400F7137C /* InfiniteGround.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F91A83D144216A400F7137C /* InfiniteGround.cpp */; };
+		5F9CB6E314F13A6200C835FC /* Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F9CB6E214F13A6200C835FC /* Utils.cpp */; };
 		5FCDAB8813F1D2F3006C0725 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FCDAB8713F1D2F3006C0725 /* QuartzCore.framework */; };
 		5FCDAB8A13F1D2F3006C0725 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FCDAB8913F1D2F3006C0725 /* OpenGLES.framework */; };
 		5FCDAB8C13F1D2F3006C0725 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FCDAB8B13F1D2F3006C0725 /* OpenAL.framework */; };
@@ -209,6 +210,7 @@
 		5F54B7F713F5DBC7009CE249 /* VehicleObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VehicleObject.h; sourceTree = "<group>"; };
 		5F5F368A13FC2FF200FA5575 /* PhyJoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhyJoint.h; sourceTree = "<group>"; };
 		5F5F368C13FC351700FA5575 /* PhyJoint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhyJoint.cpp; sourceTree = "<group>"; };
+		5F7F694914F13CC200C5F958 /* Utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		5F8218901438AC6A009CF81A /* PerlinNoise.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PerlinNoise.cpp; sourceTree = "<group>"; };
 		5F8218921438AC74009CF81A /* PerlinNoise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PerlinNoise.h; sourceTree = "<group>"; };
 		5F8BD40013FAF5030052463F /* PhyWheel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhyWheel.cpp; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 		5F91A8391442100800F7137C /* b2WheelJoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = b2WheelJoint.h; path = libs/Box2D/Dynamics/Joints/b2WheelJoint.h; sourceTree = "<group>"; };
 		5F91A83C1442163C00F7137C /* InfiniteGround.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfiniteGround.h; sourceTree = "<group>"; };
 		5F91A83D144216A400F7137C /* InfiniteGround.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InfiniteGround.cpp; sourceTree = "<group>"; };
+		5F9CB6E214F13A6200C835FC /* Utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Utils.cpp; sourceTree = "<group>"; };
 		5FCDAB8313F1D2F3006C0725 /* BridgeRunner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BridgeRunner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FCDAB8713F1D2F3006C0725 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		5FCDAB8913F1D2F3006C0725 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -1325,6 +1328,8 @@
 				5F8218921438AC74009CF81A /* PerlinNoise.h */,
 				5FD55B8A14C4E7180074663C /* MenuScene.h */,
 				5FD55B8C14C5CC230074663C /* MenuScene.cpp */,
+				5F9CB6E214F13A6200C835FC /* Utils.cpp */,
+				5F7F694914F13CC200C5F958 /* Utils.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1378,7 +1383,7 @@
 		5FCDAB7A13F1D2F3006C0725 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0430;
 			};
 			buildConfigurationList = 5FCDAB7D13F1D2F3006C0725 /* Build configuration list for PBXProject "BridgeRunner" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1593,6 +1598,7 @@
 				5F91A83E144216A400F7137C /* InfiniteGround.cpp in Sources */,
 				5F3F70C41496B21E00552416 /* GroundSegment.cpp in Sources */,
 				5FD55B8D14C5CC230074663C /* MenuScene.cpp in Sources */,
+				5F9CB6E314F13A6200C835FC /* Utils.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1655,6 +1661,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1678,6 +1685,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = BridgeRunner/Prefix.pch;

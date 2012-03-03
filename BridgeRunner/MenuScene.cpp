@@ -9,6 +9,7 @@
 #include <iostream>
 #include "MenuScene.h"
 #include "InfiniteScene.h"
+#include "Utils.h"
 
 void MenuScene::StartScene( cocos2d::CCObject* pSender )
 {
@@ -33,6 +34,8 @@ MenuScene::MenuScene() : ScreenSize( CCDirector::sharedDirector()->getWinSize() 
                                                          this,
                                                          menu_selector(MenuScene::StartScene) );
 
+    GroundTexture = CCTextureCache::sharedTextureCache()->addImage( "ground.png" );
+    
     NewGameButton->setPosition( CCPoint(ScreenSize.width-192, ScreenSize.height/3*2) );
     MainMenu = CCMenu::menuWithItem( NewGameButton );
     MainMenu->setPosition( CCPointZero );
@@ -68,7 +71,7 @@ void MenuScene::MoveScene( float Speed )
     for( std::deque< CCPoint >::iterator it = GroundPoints.begin();
         it != GroundPoints.end() - 1; ++it )
     {
-        ccDrawLine( *it, *(it+1) );
+        DrawFilledGround( *it, *(it+1) );
         
         // Translate points
         it->x -= Speed;
