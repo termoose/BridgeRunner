@@ -23,7 +23,7 @@ public:
     static cocos2d::CCScene *scene();
     void draw();
     
-    void AddPoint( float NewPoint );
+    void AddNewPoint( float NewPoint );
     void RemovePoint();
 
 private:
@@ -35,6 +35,7 @@ private:
     void MoveScene( float Speed );
     
     float LengthCounter;
+    float GroundDelta;
     
     PerlinNoise Noise;
 };

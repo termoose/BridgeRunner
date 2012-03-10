@@ -96,11 +96,11 @@ bool AppDelegate::applicationDidFinishLaunching()
     //CCScene *Test = TestScene::scene();
     //pDirector->runWithScene( Test );
     
-    //CCScene *InfTest = InfiniteScene::scene();
-    //pDirector->runWithScene( InfTest );
+    CCScene *InfTest = InfiniteScene::scene();
+    pDirector->runWithScene( InfTest );
     
-    CCScene *MenuTest = MenuScene::scene();
-    pDirector->runWithScene( MenuTest );
+    //CCScene *MenuTest = MenuScene::scene();
+    //pDirector->runWithScene( MenuTest );
 
 	// run
 	//pDirector->runWithScene( InfTest );

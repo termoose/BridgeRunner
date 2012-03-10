@@ -50,6 +50,8 @@ protected:
     
     Physics *World;
     
+    CCTexture2D *GroundTexture;
+
     CCMenuItemImage *CloseButton;
     CCMenu *SceneMenu;
     

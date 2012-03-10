@@ -12,8 +12,10 @@
 #include "MenuScene.h"
 
 Scene::Scene() : 
-BridgeLengthEpsilon( 0.1 ), IterationCnt( 0 ), ScreenTouched( false ), ScreenSize( CCDirector::sharedDirector()->getWinSize() )
+BridgeLengthEpsilon( 10.0 ), IterationCnt( 0 ), ScreenTouched( false ), ScreenSize( CCDirector::sharedDirector()->getWinSize() )
 {
+    ccTexParams tex_params = { GL_LINEAR, GL_LINEAR, GL_REPEAT, GL_REPEAT };
+    
     setIsTouchEnabled( true );
     setIsAccelerometerEnabled( false );
 
@@ -21,6 +23,9 @@ BridgeLengthEpsilon( 0.1 ), IterationCnt( 0 ), ScreenTouched( false ), ScreenSiz
     
     // Create the physics object
     World = new Physics();
+    
+    GroundTexture = CCTextureCache::sharedTextureCache()->addImage( "ground.png" );
+    GroundTexture->setTexParameters( &tex_params );
     
     // Create the close button, default for all scenes
     CloseButton = CCMenuItemImage::itemFromNormalImage( "CloseNormal.png", "CloseSelected.png", this, menu_selector(Scene::MainMenu) );
@@ -44,9 +49,9 @@ void Scene::MainMenu( cocos2d::CCObject* pSender )
 
 void Scene::draw()
 {
-	glDisable(GL_TEXTURE_2D);
+	//glDisable(GL_TEXTURE_2D);
 	glDisableClientState(GL_COLOR_ARRAY);
-	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+	//glDisableClientState(GL_TEXTURE_COORD_ARRAY);
     
     glLineWidth( 2.0 );
     World->RenderAll();
@@ -58,9 +63,9 @@ void Scene::draw()
         ccDrawLine( BoxToCCVec( SegmentStart ), BoxToCCVec( SegmentStop ) );
     }
     
-	glEnable(GL_TEXTURE_2D);
+	//glEnable(GL_TEXTURE_2D);
 	glEnableClientState(GL_COLOR_ARRAY);
-	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+	//glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 }
 
 b2Vec2 Scene::CCToBoxVec( cocos2d::CCPoint Point )

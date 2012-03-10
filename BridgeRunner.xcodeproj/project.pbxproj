@@ -192,6 +192,7 @@
 		5FCDADB513F1D371006C0725 /* Physics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FCDADB113F1D371006C0725 /* Physics.cpp */; };
 		5FD55B8D14C5CC230074663C /* MenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FD55B8C14C5CC230074663C /* MenuScene.cpp */; };
 		5FE0D6B614323CDD0006079A /* InfiniteScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FE0D6B514323CDD0006079A /* InfiniteScene.cpp */; };
+		5FEEC7601502473F00A9E658 /* ground.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FEEC75F1502473F00A9E658 /* ground.png */; };
 		5FF8D24C14DD7AE600F67040 /* menuimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FF8D24B14DD7AE600F67040 /* menuimage.png */; };
 		5FF8D24F14DD80D500F67040 /* new_game_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FF8D24D14DD80D500F67040 /* new_game_down.png */; };
 		5FF8D25014DD80D500F67040 /* new_game.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FF8D24E14DD80D500F67040 /* new_game.png */; };
@@ -584,6 +585,7 @@
 		5FD55B8C14C5CC230074663C /* MenuScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MenuScene.cpp; sourceTree = "<group>"; };
 		5FE0D6B314323C290006079A /* InfiniteScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfiniteScene.h; sourceTree = "<group>"; };
 		5FE0D6B514323CDD0006079A /* InfiniteScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InfiniteScene.cpp; sourceTree = "<group>"; };
+		5FEEC75F1502473F00A9E658 /* ground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ground.png; path = Resources/ground.png; sourceTree = "<group>"; };
 		5FF8D24B14DD7AE600F67040 /* menuimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menuimage.png; path = Resources/menuimage.png; sourceTree = "<group>"; };
 		5FF8D24D14DD80D500F67040 /* new_game_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = new_game_down.png; path = Resources/new_game_down.png; sourceTree = "<group>"; };
 		5FF8D24E14DD80D500F67040 /* new_game.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = new_game.png; path = Resources/new_game.png; sourceTree = "<group>"; };
@@ -667,6 +669,7 @@
 		5FCDAB9813F1D2F3006C0725 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5FEEC75F1502473F00A9E658 /* ground.png */,
 				5FF8D25314DED8B900F67040 /* howsherolls_heading.png */,
 				5FF8D25114DDDB3C00F67040 /* rolling_girl.png */,
 				5FF8D24D14DD80D500F67040 /* new_game_down.png */,
@@ -1423,6 +1426,7 @@
 				5FF8D25014DD80D500F67040 /* new_game.png in Resources */,
 				5FF8D25214DDDB3C00F67040 /* rolling_girl.png in Resources */,
 				5FF8D25414DED8B900F67040 /* howsherolls_heading.png in Resources */,
+				5FEEC7601502473F00A9E658 /* ground.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1619,7 +1623,7 @@
 					TARGET_OS_IPHONE,
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
@@ -1643,7 +1647,7 @@
 					USE_FILE32API,
 					TARGET_OS_IPHONE,
 				);
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (

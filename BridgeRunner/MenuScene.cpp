@@ -18,8 +18,12 @@ void MenuScene::StartScene( cocos2d::CCObject* pSender )
 
 MenuScene::MenuScene() : ScreenSize( CCDirector::sharedDirector()->getWinSize() ), Noise( 0.1, 1.0 ), Counter(ScreenSize.width)
 {
+    ccTexParams tex_params = { GL_LINEAR, GL_LINEAR, GL_REPEAT, GL_REPEAT };
+
     for( float i = 0; i < ScreenSize.width; i += ScreenSize.width / 128 )
         GroundPoints.push_back( CCPoint( i, Noise.GetNoise( i / 30.0) * 80 + 100 ) );
+
+    // Texture parameters
     
     // Menu Image
     MainMenuImage = CCSprite::spriteWithFile( "menuimage.png" );
@@ -35,6 +39,7 @@ MenuScene::MenuScene() : ScreenSize( CCDirector::sharedDirector()->getWinSize() 
                                                          menu_selector(MenuScene::StartScene) );
 
     GroundTexture = CCTextureCache::sharedTextureCache()->addImage( "ground.png" );
+    GroundTexture->setTexParameters( &tex_params );
     
     NewGameButton->setPosition( CCPoint(ScreenSize.width-192, ScreenSize.height/3*2) );
     MainMenu = CCMenu::menuWithItem( NewGameButton );
@@ -67,15 +72,18 @@ void MenuScene::MoveScene( float Speed )
     {
         GroundPoints.pop_front();
     }
+
+    GLuint GroundTextureID = GroundTexture->getName();
     
     for( std::deque< CCPoint >::iterator it = GroundPoints.begin();
         it != GroundPoints.end() - 1; ++it )
     {
-        DrawFilledGround( *it, *(it+1) );
+        DrawFilledGround( *it, *(it+1), GroundTextureID, Counter );
         
         // Translate points
         it->x -= Speed;
     }
+    
     GroundPoints.back().x -= Speed;
     
     Counter += Speed;
