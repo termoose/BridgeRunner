@@ -30,7 +30,6 @@ BridgeSegment::~BridgeSegment()
 
 b2Vec2 BridgeSegment::GetStopPoint()
 {
-    //b2Vec2 Pos = GetPosition() + StopPosition;
     b2Vec2 Pos = Body->GetWorldPoint( StopPosition );
     return b2Vec2( Pos.x * PTM_RATIO, Pos.y * PTM_RATIO );
 }

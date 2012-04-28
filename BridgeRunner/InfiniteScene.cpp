@@ -13,7 +13,7 @@
 #include "PerlinNoise.h"
 #include "BridgeSegment.h"
 
-InfiniteScene::InfiniteScene() : Scene(), Noise( 0.1, 1.0 ), LengthCounter( 0.0 ), GroundDelta( ScreenSize.width / 8.0 )
+InfiniteScene::InfiniteScene() : Scene(), Noise( 0.1, 1.0 ), LengthCounter( 0.0 ), GroundDelta( ScreenSize.width / 32.0 ), RemoveGroundProbability( 90.0 )
 {    
     RollingCircle = new PhyWheel( b2Vec2( 10.0, 320.0 ) );
     World->AddPhyObj( RollingCircle );
@@ -21,120 +21,60 @@ InfiniteScene::InfiniteScene() : Scene(), Noise( 0.1, 1.0 ), LengthCounter( 0.0 
     BallImage = CCSprite::spriteWithFile( "rolling_girl.png" );
     addChild( BallImage );
 
-    //GroundSegment *InitialSegment = new GroundSegment( b2Vec2( 0.0, ScreenSize.height / 2.0 ),
-    //                                                  b2Vec2( 200.0, ScreenSize.height / 2.0 ) );
-    //World->AddPhyObj( InitialSegment );
-    //InitialSegment->SetTextureID( GroundTexture->getName() );
-    
-    //  CCPoint( i, Noise.GetNoise( i / 30.0) * 80 + 100 ) 
-    
-    for( float i = 0.0; i < ScreenSize.width; i += GroundDelta )
+    // Fill ground with initial segments
+    for( float i = 0; i < ScreenSize.width; i += GroundDelta )
     {
-        GroundSegment *CurrentSegment = new GroundSegment( b2Vec2( i, 200.0 ),
-                                                          b2Vec2( i + GroundDelta, 200.0 ) );
+        b2Vec2 StartGroundPoint( i, Noise.GetNoise( i/30.0 )*80.0 + 100.0 );
+        b2Vec2 EndGroundPoint( i + GroundDelta, Noise.GetNoise( (i + GroundDelta)/30.0 )*80.0 + 100.0 );
         
-        CurrentSegment->SetTextureID( GroundTexture->getName() );
-        
-        World->AddPhyObj( CurrentSegment );
-        GroundSegments.push_back( CurrentSegment );
+        GroundSegment *NewSegment = new GroundSegment( StartGroundPoint, EndGroundPoint );
+        World->AddPhyObj( NewSegment );
+        NewSegment->SetTextureID( GroundTexture->getName() );
+        GroundSegments.push_back( NewSegment );
     }
-    
-    //GroundSegments.push_back( InitialSegment );
 }
 
 InfiniteScene::~InfiniteScene()
 {
 }
 
-void InfiniteScene::AddNewPoint( float NewPointOffset )
+void InfiniteScene::AddNewSegment( float Offset )
 {
-    b2Vec2 LastPoint = GroundSegments.back()->GetStopPoint();
-    float NewPointPosition = LastPoint.x + NewPointOffset;
-
-    b2Vec2 NewPointVector( NewPointPosition, Noise.GetNoise( LengthCounter / 100.0) * 80 + 100 );
+    auto LastSegment = GroundSegments.back();
+    b2Vec2 LastPosition = LastSegment->GetStopPoint();
     
-    GroundSegment *NewSegment = new GroundSegment( GroundSegments.back()->GetStopPoint(), NewPointVector );
+    float NewPosition = LastPosition.x + GroundDelta;
     
-    // Set the ground texture
-    NewSegment->SetTextureID( GroundTexture->getName() );
+    b2Vec2 StopPosition( NewPosition, Noise.GetNoise(LengthCounter/30.0)*80 + 100.0 );
+    //b2Vec2 StopPosition( NewPosition + GroundDelta, Noise.GetNoise( (NewPosition + GroundDelta)/30.0)*80.0 + 100.0 );
     
+    GroundSegment *NewSegment = new GroundSegment( LastPosition, StopPosition );
     World->AddPhyObj( NewSegment );
+    NewSegment->SetTextureID( GroundTexture->getName() );
     GroundSegments.push_back( NewSegment );
 }
 
-void InfiniteScene::RemovePoint()
+void InfiniteScene::RemoveSegment()
 {
     World->RemPhyObj( GroundSegments.front()->GetObjectID() );
     GroundSegments.pop_front();
 }
 
 void InfiniteScene::MoveScene( float Speed )
-{
-    float BallPosition = RollingCircle->GetPosition().x * PTM_RATIO;
+{    
+    if( GroundSegments.back()->GetStopPoint().x < ScreenSize.width - 20.0 )
+        AddNewSegment( Speed );
     
-    if( BallPosition < 100.0 )
+    if( GroundSegments.front()->GetStartPoint().x < 10.0 )
+        RemoveSegment();
+    
+    for( auto& Segment : GroundSegments )
     {
-        RollingCircle->SetSpeed( 1.0 );
-    }
-    else if( BallPosition > ScreenSize.width )
-    {
-        RollingCircle->SetSpeed( 0.0 );
+        Segment->SetLinearVelocity( b2Vec2(-Speed, 0.0) );
+        Segment->SetTextureOffset( LengthCounter / PTM_RATIO / 2.0 );
     }
     
-    // Remove segments that scroll off screen
-    if( GroundSegments.front()->GetStopPoint().x < 0.0 )
-        RemovePoint();
-    
-    if( GroundSegments.back()->GetStopPoint().x < ScreenSize.width + GroundDelta )
-    {
-        AddNewPoint( GroundDelta );
-    }
-    
-//    return;
-//    //if( GroundSegments.back()->GetStopPoint().x < ScreenSize.width )
-//        //AddPoint( Speed );
-//    
-//    if( GroundSegments.front()->GetStopPoint().x < 0.0 && GroundSegments.size() > 100 )
-//        RemovePoint();
-//    
-//    // If we have more than three segments, we remove the oldest one
-//    // Should be set in a file on disk, since it should be possible to purchase more segments
-//    if( BridgeSegments.size() > 3 )
-//    {
-//        DeleteOldestSegment();
-//    }
-//    
-//    float BallPosition = RollingCircle->GetPosition().x;
-//    
-//    // Breaking
-//    if( BallPosition * PTM_RATIO > ScreenSize.width  )
-//    {
-//        RollingCircle->SetSpeed( 0.0 );
-//    }
-//    // Speeding up
-//    else if( BallPosition * PTM_RATIO < 100.0 )
-//    {
-//        RollingCircle->SetSpeed( 1.0 );
-//    }
-    
-    // Move all ground segments
-    for( std::deque< GroundSegment * >::const_iterator it = GroundSegments.begin();
-        it != GroundSegments.end(); ++it )
-    {
-        (*it)->SetTextureOffset();
-        (*it)->SetLinearVelocity( b2Vec2( -Speed, 0.0 ) );
-    }
-    
-    // Move all bridge segments
-    for( std::deque< BridgeSegment * >::const_iterator it = BridgeSegments.begin();
-        it != BridgeSegments.end(); ++it )
-    {        
-        (*it)->SetLinearVelocity( b2Vec2( -Speed, 0.0 ) );
-    }
-
     LengthCounter += Speed;
-    
-    std::cout << "Speed: " << GroundSegments.back()->GetBody()->GetLinearVelocity().x << std::endl;
 }
 
 void InfiniteScene::draw()
@@ -144,7 +84,7 @@ void InfiniteScene::draw()
     BallImage->setPosition( CCPoint(RollingCircle->GetPosition().x * PTM_RATIO, RollingCircle->GetPosition().y * PTM_RATIO) );
     BallImage->setRotation( -CC_RADIANS_TO_DEGREES(RollingCircle->GetAngle()) );
 
-    MoveScene( 8.0 );
+    MoveScene( 2.0 );
 }
 
 CCScene *InfiniteScene::scene()

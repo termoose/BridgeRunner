@@ -9,6 +9,7 @@
 #include <iostream>
 #include "MenuScene.h"
 #include "InfiniteScene.h"
+#include "ShopMenu.h"
 #include "Utils.h"
 
 void MenuScene::StartScene( cocos2d::CCObject* pSender )
@@ -16,14 +17,19 @@ void MenuScene::StartScene( cocos2d::CCObject* pSender )
     CCDirector::sharedDirector()->replaceScene( InfiniteScene::scene() );
 }
 
+void MenuScene::OpenShopMenu( cocos2d::CCObject *pSender )
+{
+    CCDirector::sharedDirector()->replaceScene( ShopMenu::scene() );
+}
+
 MenuScene::MenuScene() : ScreenSize( CCDirector::sharedDirector()->getWinSize() ), Noise( 0.1, 1.0 ), Counter(ScreenSize.width)
 {
+    // Texture parameters
     ccTexParams tex_params = { GL_LINEAR, GL_LINEAR, GL_REPEAT, GL_REPEAT };
 
+    // Initial fill of ground points
     for( float i = 0; i < ScreenSize.width; i += ScreenSize.width / 128 )
         GroundPoints.push_back( CCPoint( i, Noise.GetNoise( i / 30.0) * 80 + 100 ) );
-
-    // Texture parameters
     
     // Menu Image
     MainMenuImage = CCSprite::spriteWithFile( "menuimage.png" );
@@ -33,16 +39,24 @@ MenuScene::MenuScene() : ScreenSize( CCDirector::sharedDirector()->getWinSize() 
     MainMenuHeading = CCSprite::spriteWithFile( "howsherolls_heading.png" );
     MainMenuHeading->setPosition( CCPoint( ScreenSize.width/2, ScreenSize.height-50) );    
     
-    NewGameButton = CCMenuItemImage::itemFromNormalImage( "new_game.png",
+    NewGameButton = CCMenuItemImage::itemFromNormalImage("new_game.png",
                                                          "new_game_down.png",
                                                          this,
                                                          menu_selector(MenuScene::StartScene) );
+    
+    ShopMenuButton = CCMenuItemImage::itemFromNormalImage("new_game.png",
+                                                          "new_game_down.png",
+                                                          this,
+                                                          menu_selector(MenuScene::OpenShopMenu) );
+                                                          
 
     GroundTexture = CCTextureCache::sharedTextureCache()->addImage( "ground.png" );
     GroundTexture->setTexParameters( &tex_params );
     
     NewGameButton->setPosition( CCPoint(ScreenSize.width-192, ScreenSize.height/3*2) );
-    MainMenu = CCMenu::menuWithItem( NewGameButton );
+    ShopMenuButton->setPosition( CCPoint( ScreenSize.width-192, ScreenSize.height/3) );
+    
+    MainMenu = CCMenu::menuWithItems( NewGameButton, ShopMenuButton, nullptr );
     MainMenu->setPosition( CCPointZero );
 
     addChild( MainMenu );
@@ -83,9 +97,10 @@ void MenuScene::MoveScene( float Speed )
         // Translate points
         it->x -= Speed;
     }
-    
+
+    // Also move our last ground point
     GroundPoints.back().x -= Speed;
-    
+
     Counter += Speed;
 }
 

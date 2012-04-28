@@ -146,13 +146,9 @@ b2World *Physics::GetWorld() const
 void Physics::RenderAll()
 {
     glColor4f( 1.0, 1.0, 1.0, 1.0 );
-    for( std::map< int32, PhyObj * >::iterator it = Objects.begin();
-        it != Objects.end(); ++it )
-    {
-        it->second->Render();
-    }
-        
-        
+    
+    for( auto& obj : Objects )
+        obj.second->Render();       
 }
 
 

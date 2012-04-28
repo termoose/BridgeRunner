@@ -18,7 +18,7 @@ public:
 
     virtual void Render();
     
-    inline void SetTextureOffset() { TextureOffset = -Body->GetPosition().x * PTM_RATIO; }
+    inline void SetTextureOffset( float Offset ) { TextureOffset = Offset * PTM_RATIO; }
     inline void SetTextureID( GLuint ID ) { TextureID = ID; }
     
 private:

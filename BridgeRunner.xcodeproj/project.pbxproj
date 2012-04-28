@@ -14,6 +14,7 @@
 		5F5F368D13FC351700FA5575 /* PhyJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F5F368C13FC351700FA5575 /* PhyJoint.cpp */; };
 		5F8218911438AC6A009CF81A /* PerlinNoise.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F8218901438AC6A009CF81A /* PerlinNoise.cpp */; };
 		5F8BD40113FAF5030052463F /* PhyWheel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F8BD40013FAF5030052463F /* PhyWheel.cpp */; };
+		5F8EA843150BAA1C00B6A84B /* ShopMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F8EA842150BAA1C00B6A84B /* ShopMenu.cpp */; };
 		5F91A81414420F5400F7137C /* b2Rope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F91A81214420F5400F7137C /* b2Rope.cpp */; };
 		5F91A81F14420F9200F7137C /* b2ChainShape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F91A81B14420F9200F7137C /* b2ChainShape.cpp */; };
 		5F91A82014420F9200F7137C /* b2EdgeShape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F91A81D14420F9200F7137C /* b2EdgeShape.cpp */; };
@@ -216,6 +217,8 @@
 		5F8218921438AC74009CF81A /* PerlinNoise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PerlinNoise.h; sourceTree = "<group>"; };
 		5F8BD40013FAF5030052463F /* PhyWheel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhyWheel.cpp; sourceTree = "<group>"; };
 		5F8BD40313FAF50E0052463F /* PhyWheel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhyWheel.h; sourceTree = "<group>"; };
+		5F8EA840150BA98300B6A84B /* ShopMenu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShopMenu.h; sourceTree = "<group>"; };
+		5F8EA842150BAA1C00B6A84B /* ShopMenu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShopMenu.cpp; sourceTree = "<group>"; };
 		5F91A81214420F5400F7137C /* b2Rope.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = b2Rope.cpp; path = libs/Box2D/Rope/b2Rope.cpp; sourceTree = "<group>"; };
 		5F91A81314420F5400F7137C /* b2Rope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = b2Rope.h; path = libs/Box2D/Rope/b2Rope.h; sourceTree = "<group>"; };
 		5F91A81B14420F9200F7137C /* b2ChainShape.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = b2ChainShape.cpp; path = libs/Box2D/Collision/Shapes/b2ChainShape.cpp; sourceTree = "<group>"; };
@@ -1325,14 +1328,16 @@
 				5FCDADA013F1D2F6006C0725 /* AppDelegate.cpp */,
 				5F13B15E1416A60E009B3D8B /* Scene.cpp */,
 				5F13B1611416A616009B3D8B /* Scene.h */,
-				5FE0D6B314323C290006079A /* InfiniteScene.h */,
 				5FE0D6B514323CDD0006079A /* InfiniteScene.cpp */,
-				5F8218901438AC6A009CF81A /* PerlinNoise.cpp */,
+				5FE0D6B314323C290006079A /* InfiniteScene.h */,
 				5F8218921438AC74009CF81A /* PerlinNoise.h */,
+				5F8218901438AC6A009CF81A /* PerlinNoise.cpp */,
 				5FD55B8A14C4E7180074663C /* MenuScene.h */,
 				5FD55B8C14C5CC230074663C /* MenuScene.cpp */,
 				5F9CB6E214F13A6200C835FC /* Utils.cpp */,
 				5F7F694914F13CC200C5F958 /* Utils.h */,
+				5F8EA840150BA98300B6A84B /* ShopMenu.h */,
+				5F8EA842150BAA1C00B6A84B /* ShopMenu.cpp */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1603,6 +1608,7 @@
 				5F3F70C41496B21E00552416 /* GroundSegment.cpp in Sources */,
 				5FD55B8D14C5CC230074663C /* MenuScene.cpp in Sources */,
 				5F9CB6E314F13A6200C835FC /* Utils.cpp in Sources */,
+				5F8EA843150BAA1C00B6A84B /* ShopMenu.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1631,7 +1637,7 @@
 					"\"$(PROJECT_NAME)/libs/CocosDenshion/include\"",
 					"\"$(SDKROOT)/usr/include/libxml2\"",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1655,7 +1661,7 @@
 					"\"$(PROJECT_NAME)/libs/CocosDenshion/include\"",
 					"\"$(SDKROOT)/usr/include/libxml2\"",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 			};

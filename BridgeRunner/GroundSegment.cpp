@@ -16,18 +16,18 @@ using namespace cocos2d;
 GroundSegment::GroundSegment( const b2Vec2 &Start, const b2Vec2 &Stop ) : 
     BridgeSegment( Start, Stop ), TextureOffset( 0.0 ), TextureID( 0 )
 {
-    EdgeShape.m_radius = 0.01;
+    EdgeShape.m_radius = 0.1;
 }
 
 void GroundSegment::Render()
-{    
+{
     b2Vec2 WorldStart = Body->GetWorldPoint( StartPosition );
     b2Vec2 WorldStop = Body->GetWorldPoint( StopPosition );
     
     glColor4f( 0.0, 1.0, 0.0, 0.0 );
 
-    //ccDrawLine( CCPoint(WorldStart.x * PTM_RATIO, WorldStart.y * PTM_RATIO),
-    //           CCPoint(WorldStop.x * PTM_RATIO, WorldStop.y * PTM_RATIO) );
+    ccDrawLine( CCPoint(WorldStart.x * PTM_RATIO, WorldStart.y * PTM_RATIO),
+               CCPoint(WorldStop.x * PTM_RATIO, WorldStop.y * PTM_RATIO) );
     
     DrawFilledGround( CCPoint( WorldStart.x * PTM_RATIO, WorldStart.y * PTM_RATIO ),
                      CCPoint( WorldStop.x * PTM_RATIO, WorldStop.y * PTM_RATIO ), TextureID, TextureOffset );

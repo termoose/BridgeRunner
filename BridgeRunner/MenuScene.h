@@ -27,7 +27,8 @@ public:
     
     void MoveScene( float Speed );
     
-    void StartScene( cocos2d::CCObject* pSender );
+    void StartScene( cocos2d::CCObject *pSender );
+    void OpenShopMenu( cocos2d::CCObject *pSender );
     
 private:
     void AddPoint( float Offset );
@@ -43,6 +44,7 @@ protected:
     PerlinNoise Noise;
     
     CCMenuItemImage *NewGameButton;
+    CCMenuItemImage *ShopMenuButton;
     
     std::deque< CCPoint > GroundPoints;
     

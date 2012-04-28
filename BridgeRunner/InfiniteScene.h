@@ -23,8 +23,8 @@ public:
     static cocos2d::CCScene *scene();
     void draw();
     
-    void AddNewPoint( float NewPoint );
-    void RemovePoint();
+    void AddNewSegment( float Offset );
+    void RemoveSegment();
 
 private:
     PhyWheel *RollingCircle;
@@ -36,6 +36,8 @@ private:
     
     float LengthCounter;
     float GroundDelta;
+    
+    float RemoveGroundProbability;
     
     PerlinNoise Noise;
 };
